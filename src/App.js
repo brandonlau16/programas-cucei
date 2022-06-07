@@ -4,20 +4,21 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <div id="barra">
+        <ul>
+          <li><a href="Home.php">Home</a></li>
+          <li><a href="Soporte.php">Soporte</a></li>
+          <li><a href="Ayuda.php">Ayuda</a></li>
+          <li><a href="cerrar_sesion.php">Cerrar sesion</a></li>
+          
+        </ul>
+      </div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>
-          programas cucei
-        </h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="App-img"></div>
       </header>
+      <body className="App-footer">
+        <div>Derechos reservados &copy; Programas CUCEI | Terminos y condiciones | Facebook & Instagram @ProgramasCUCEI | 2022</div>
+      </body>
     </div>
   );
 }
