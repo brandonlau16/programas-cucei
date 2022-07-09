@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 
-.overlay-est {
+.overlay-login {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -16,20 +16,19 @@
     align-content: center;
     justify-content: right;
     background: url("https://www.xtrafondos.com/wallpapers/montanas-en-bosque-minimalista-flat-3306.jpg");
-	overflow: auto;
-	background-size: contain;
+    background-size: contain;
 }
 
-.texto-encima-est{
+.texto-encima-login{
     position: absolute;
     color: rgba(0, 0, 0, 0.60);
 }
 
-.titulo-est{
+.titulo-login{
     font-weight: bold;
 }
 
-.contenedor-texto-est {
+.contenedor-texto-login {
     position: absolute;
     top: 140px;
     left: 100px;
@@ -40,6 +39,10 @@
 .titulo {
     text-align: center;
     font-weight: bold;
+}
+
+.registro {
+    text-decoration: line;
 }
 
 body {

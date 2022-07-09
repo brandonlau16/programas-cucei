@@ -1,98 +1,121 @@
 .App {
-    text-align: center;
-  }
+  text-align: center;
+  background: rgb(154,154,154);
+  background: linear-gradient(0deg, rgba(154,154,154,1) 0%, rgba(232,232,232,1) 100%); 
+}
   
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
-  .App-header {
-    background-color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  #barra ul {
-    top: 0;
-    width: 100%;
-    list-style-type: none;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #fff;
-  }
-  
-  #barra li {
-    display: inline;
-    text-align: center;
-    margin: 0 0 0 0;
-    float: left;
-    border-right: none;
-  }
-  
-  #barra li:last-child {
-    border-right: none;
-  }
-  
-  #barra li a {
-    padding: 20px 10px;
-    color: #666;
-    background-color: #fff;
-    text-decoration: none;
-    text-align: center;
-    font-size: 14px;
-    display: block;
-  }
+.App-header {
+  height: 400px;
+  width: 100%;
+  background: url("https://www.xtrafondos.com/wallpapers/montanas-en-bosque-minimalista-flat-3306.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  #img {
-    background-color: #fff;
-    display: block;
-  }
+.texto-encima{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(0, 0, 0, 0.60);
+}
+
+.titulo-home {
+  font-weight: bold;
+}
+
+.navbar-nav li:hover .barra {
+  display: block;
+  width: 25vh;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.blue{
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.cards-header {
+  height: 100%;
+  width: 100%;
+  padding: 100px 0px 100px 0px;
+}
+
+.overlay-barra {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-content: center;
+  justify-content: right;
+}
+
+.barra {
+  width: 17vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
   
-  #barra li a:hover {
-    color: #ffffff;
-    background-color: #219ebc;
-  }
+.barra ul {
+  padding: 0;
+  list-style: none;
+}
   
-  .App-footer {
-    height: 50px;
-    line-height: 50px;
-    background: black;
-    color: white;
-    text-align: center;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    flex: 0 0 auto;
-    font-size: 14px;
-  }
+.barra li {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding-top: 3%;
+  padding-right: 8%;
+}
+
+.barra li:first-of-type {
+  width: 100%;
+  height: 100%;
+  padding-top: 0%;
+}
+
+.barra li a {
+  font-size: 12px;
+  color: white;
+}
+
+#perfil {
+  width: 170px;
+  height: 170px;
+  border-radius: 100%;
+  margin: 3px;
+}
+
+.barra:hover li:hover{
+  background-color: rgba(201, 46, 175, 0.562);
+}
+
+.barra:hover li:hover:first-of-type{
+  background-color: transparent;
+}
+
+#circulo {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  cursor: pointer;
+}
   
-  .App-img {
-    background-color: #1d3557;
-    height: 350px;
-    width: 100%;
-  }
+.App-footer {
+  height: 200px;
+  line-height: 50px;
+  background: black;
+  color: white;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  flex: 0 0 auto;
+  font-size: 14px;
+}
+
+  

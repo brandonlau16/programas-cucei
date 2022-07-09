@@ -1,25 +1,55 @@
+import React, { useState } from "react";
+import Barra from "./Barra";
+import Cards from './Cards';
 import './Home.css';
 
 function Home() {
+  const [estadoBarra, cambiarEstadoBarra] = useState(false);
+
   return (
     <div className="App">
-      <div id="barra">
-        <ul>
-            <li><a id="img" href="Home.php"><img src="https://images.vexels.com/media/users/3/224233/isolated/preview/d5ee0e9c87bb54cf867d7fb89c4570b8-logotipo-de-educacion-en-linea.png" width="30px" height="15px"/></a></li>
-            <li><a href="Home.php">Home</a></li>
-            <li><a href="Soporte.php">Soporte</a></li>
-            <li><a href="Ayuda.php">Ayuda</a></li>
-            <li><a href="cerrar_sesion.php">Cerrar sesion</a></li>
-            <li id="img2"><a id="img" href="Home.php"><img src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png" width="30px" height="15px"/></a></li>
-        </ul>
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
+        rel="stylesheet"
+      />
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+      ></script>
+
+      <div className="App-header">
+        <nav class="navbar navbar-expand-lg navbar-dark blue fixed" id="menu">
+          <div class="container">
+            <a class="navbar-brand">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <img src="https://www.caritas.org.mx/wp-content/uploads/2019/02/cualidades-persona-humanitaria.jpg" id="circulo" onClick={() => cambiarEstadoBarra(!estadoBarra)}/>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <Barra estado={estadoBarra} cambiarEstado={cambiarEstadoBarra}/>
+        <div class="texto-encima"> 
+          <h4 class="titulo-home">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
+          <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>
+        </div>
       </div>
 
-      <header className="App-header">
-        <div className="App-img"></div>
-      </header>
-
-      <div>
-         
+      <div className="cards-header">
+        <Cards/>
       </div>
 
       <body className="App-footer">

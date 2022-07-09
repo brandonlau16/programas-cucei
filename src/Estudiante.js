@@ -4,16 +4,16 @@ import './Estudiante.css';
 
 const Estudiante = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+
 	return (
 		<>
-			<div id="barra">
-				<ul>
-					<li><a href="Home.php">Home</a></li>
-					<li><a href="Soporte.php">Soporte</a></li>
-					<li><a href="Ayuda.php">Ayuda</a></li>
-					<li><a href="cerrar_sesion.php">Cerrar sesion</a></li>
-				</ul>
-			</div>
+		<div class="overlay-est">
+            <div class="contenedor-texto-est">
+                <div class="texto-encima-est"> 
+                    <h4 class="titulo-est">BIENVENIDO A PROGRAMAS CUCEI! <br/><br/></h4>
+                    <p>La plataforma que te proporciona los programas disponibles para tu carrera, crea tu perfil, navega y registrate a los programas que se ajusten a ti.</p>
+                </div>
+            </div>
 
 			<Formik
 				initialValues={{
@@ -22,8 +22,11 @@ const Estudiante = () => {
 					apellido: '',
 					correo: '',
 					pass: '',
+					descripcion: '',
 					carrera: '',
-					semestre: ''
+					ciclo: '',
+					semestre: '',
+					status: ''
 
 				}}
 				validate={(valores) => {
@@ -83,12 +86,14 @@ const Estudiante = () => {
 				onSubmit={(valores, {resetForm}) => {
 					resetForm();
 					console.log('Formulario enviado');
+					console.log(valores);
 					cambiarFormularioEnviado(true);
 					setTimeout(() => cambiarFormularioEnviado(false), 5000);
 				}}
 			>
 				{( {errors} ) => (
 					<Form className="formulario">
+						<label htmlFor="titulo" class="titulo"><h4 class="titulo">¡Bienvenido!</h4></label><br/>
 						<div>
 							<label htmlFor="codigo">Codigo</label>
 							<Field
@@ -136,7 +141,7 @@ const Estudiante = () => {
 						<div>
 							<label htmlFor="pass">Contraseña</label>
 							<Field
-								type="pass" 
+								type="password" 
 								id="pass" 
 								name="pass"  
 							/>
@@ -196,10 +201,7 @@ const Estudiante = () => {
 					</Form>
 				)}
 			</Formik>
-
-			<div className="App-footer">
-				<div>Derechos reservados &copy; Programas CUCEI | Terminos y condiciones | Facebook & Instagram @ProgramasCUCEI | 2022</div>
-			</div>
+		</div>
 		</>
 	);
 }
