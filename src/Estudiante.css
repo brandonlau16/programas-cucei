@@ -31,9 +31,9 @@
 
 .contenedor-texto-est {
     position: absolute;
-    top: 140px;
-    left: 100px;
-    width: 450px;
+    top: 21%;
+    left: 7%;
+    width: 32%;
     background-color: white;
 }
 
@@ -54,31 +54,31 @@ body {
 	justify-content: center;
 }
 
-.formulario {
-	width: 500px;
+.formulario-est {
+	width: 36.5%;
 	background: rgba(255, 255, 255, 0.70);
 	border-radius: 2px;
 	padding: 20px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     position: absolute;
-    top: 140px;
-    right: 100px;
+    top: 21%;
+    right: 7.3%;
 }
 
-.formulario > div {
-	margin-bottom: 20px;
+.formulario-est > div {
+	margin-bottom: 5%;
 }
 
-.formulario label {
+.formulario-est label {
 	display: block;
 	font-weight: 600;
 	font-size: 14px;
-	margin-bottom: 5px;
+	margin-bottom: 1.3%;
 	color: rgba(0, 0, 0, 0.60);
 }
 
-.formulario input,
-.formulario textarea {
+.formulario-est input,
+.formulario-est textarea {
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
     height: 40px;
@@ -90,18 +90,18 @@ body {
 	color: #1f1f1f;
 }
 
-.formulario input:focus {
+.formulario-est input:focus {
 	outline: none;
 	border: 2px solid #0085FF;
 }
 
-.formulario .error {
+.formulario-est .error {
 	color: #e92b2d;
 	font-weight: 600;
 	font-size: 12px;
 }
 
-.formulario button[type="submit"] {
+.formulario-est button[type="submit"] {
 	display: block;
 	background: #0085FF;
 	font-weight: 600;
@@ -116,17 +116,53 @@ body {
     height: 40px;
 }
 
-.formulario button[type="submit"]:hover {
+.formulario-est button[type="submit"]:hover {
 	background: #0051ff;
 }
 
-.formulario .exito {
+.formulario-est .exito {
 	text-align: center;
 	font-size: 14px;
 	padding-top: 20px;
 	color: #02a802;
 }
 
-.formulario input[type="radio"] {
+.formulario-est input[type="radio"] {
 	width: auto;
+}
+
+@media screen and (max-width: 500px) {
+	.contenedor-texto-est {
+		top: 5%;
+		left: 5%;
+		right: 5%;
+		width: 90%;
+		font-size: 12px;
+	}
+
+	.formulario-est {
+		top: 40%;
+		left: 5%;
+		right: 5%;
+		width: 90%;
+	}
+
+	.formulario-est label {
+		font-size: 12px;
+	}
+	
+	.formulario-est input,
+	.formulario-est textarea {
+		height: 30px;
+		font-size: 12px;
+	}
+
+	.formulario-est button[type="submit"] {
+		font-size: 12px;
+		height: 30px;
+	}
+
+	.titulo-login {
+		font-size: 14px;
+	}
 }

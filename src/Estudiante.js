@@ -92,7 +92,7 @@ const Estudiante = () => {
 				}}
 			>
 				{( {errors} ) => (
-					<Form className="formulario">
+					<Form className="formulario-est">
 						<label htmlFor="titulo" class="titulo"><h4 class="titulo">¡Bienvenido!</h4></label><br/>
 						<div>
 							<label htmlFor="codigo">Codigo</label>

@@ -29,10 +29,7 @@ function Home() {
         <nav class="navbar navbar-expand-lg navbar-dark blue fixed" id="menu">
           <div class="container">
             <a class="navbar-brand">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class="icono">
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <img src="https://www.caritas.org.mx/wp-content/uploads/2019/02/cualidades-persona-humanitaria.jpg" id="circulo" onClick={() => cambiarEstadoBarra(!estadoBarra)}/>
