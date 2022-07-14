@@ -4,12 +4,12 @@ import Home from "./Home";
 import Login from "./Login";
 
 function App() {
-    return(
+    return (
         <div>
             <Routes>
-                <Route path="/" element={<Login/>}/>
-                <Route path="/Home" element={<Home/>}/>
-                <Route path="/Registro" element={<Estudiante/>}/>
+                <Route path="/" element={<Login />} />
+                <Route path="/Home" element={<Home />} />
+                <Route path="/Registro" element={<Estudiante />} />
             </Routes>
         </div>
     );
