@@ -28,7 +28,7 @@ function Home() {
       <div className="App-header">
         <nav class="navbar navbar-expand-lg navbar-dark blue fixed" id="menu">
           <div class="container">
-            <a class="navbar-brand">Navbar</a>
+            <a class="navbar-brand">Programas CUCEI</a>
             <div class="icono">
               <ul class="navbar-nav">
                 <li class="nav-item">

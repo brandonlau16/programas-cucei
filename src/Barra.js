@@ -12,7 +12,7 @@ function Barra ({estado, cambiarEstado}) {
               <li><a href="#">Editar perfil</a></li>
               <li><a href="#">Mis favoritos</a></li>
               <li><a href="#">Ayuda</a></li>
-              <li><a href="#">Cerrar sesion</a></li>
+              <li><a href="/">Cerrar sesion</a></li>
             </ul>
         </div>
       </div>

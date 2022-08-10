@@ -5,6 +5,19 @@ import './Estudiante.css';
 const Estudiante = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
+	const handleSubmit = (valores) => {
+		const requestInit = {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(valores)
+		}
+
+		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudiante';
+		fetch (url, requestInit);
+		cambiarFormularioEnviado(true);
+		setTimeout(() => cambiarFormularioEnviado(false), 5000);
+	}
+
 	return (
 		<>
 		<div class="overlay-est">
@@ -19,15 +32,16 @@ const Estudiante = () => {
 				initialValues={{
 					codigo: '',
 					nombre: '',
-					apellido: '',
-					correo: '',
-					pass: '',
+					primer_apellido: '',
+					segundo_apellido: '',
+					contrasena: '',
+					clave_carrera: '',
+					ciclo_escolar: '',
+					num_semestre: '',
+					estatus: '',
+					correo_estudiante: '',
 					descripcion: '',
-					carrera: '',
-					ciclo: '',
-					semestre: '',
-					status: ''
-
+					foto: ''
 				}}
 				validate={(valores) => {
 					let errores = {};
@@ -46,39 +60,46 @@ const Estudiante = () => {
 						errores.nombre = 'El nombre solo puede contener letras y espacios'
 					}
 
-					// Validacion apellido
-					if(!valores.apellido){
-						errores.apellido = 'Por favor ingresa tus apellidos'
-					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido)){
-						errores.apellido = 'Los apellidos solo pueden contener letras y espacios'
+					// Validacion primer apellido
+					if(!valores.primer_apellido){
+						errores.primer_apellido = 'Por favor ingresa tu primer apellido'
+					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.primer_apellido)){
+						errores.primer_apellido = 'El apellido solo pueden contener letras y espacios'
+					}
+
+					// Validacion segundo apellido
+					if(!valores.segundo_apellido){
+						errores.segundo_apellido = 'Por favor ingresa tu segundo apellido'
+					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.segundo_apellido)){
+						errores.segundo_apellido = 'El apellido solo pueden contener letras y espacios'
 					}
 
 					// Validacion correo
-					if(!valores.correo){
-						errores.correo = 'Por favor ingresa un correo electronico'
-					} else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.correo)){
-						errores.correo = 'El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
+					if(!valores.correo_estudiante){
+						errores.correo_estudiante = 'Por favor ingresa un correo electronico'
+					} else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.correo_estudiante)){
+						errores.correo_estudiante = 'El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
 					}
 
-					// Validacion pass
-					if(!valores.pass){
-						errores.pass = 'Por favor ingresa una contraseña'
-					} else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/.test(valores.pass)){
-						errores.pass = 'La contraseña debe tener minimo 8 caracteres, maximo 15, al menos una letra mayúscula, al menos una letra minucula, al menos un dígito, no espacios en blanco, al menos 1 caracter especial.'
+					// Validacion contrasena
+					if(!valores.contrasena){
+						errores.contrasena = 'Por favor ingresa una contraseña'
+					} else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/.test(valores.contrasena)){
+						errores.contrasena = 'La contraseña debe tener minimo 8 caracteres, maximo 15, al menos una letra mayúscula, al menos una letra minucula, al menos un dígito, no espacios en blanco, al menos 1 caracter especial.'
 					}
 
 					// Validacion carrera
-					if(!valores.carrera){
-						errores.carrera = 'Por favor ingresa una carrera'
-					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.carrera)){
-						errores.carrera = 'La carrera solo puede contener letras y espacios'
+					if(!valores.clave_carrera){
+						errores.clave_carrera = 'Por favor ingresa una clave de carrera'
+					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.clave_carrera)){
+						errores.clave_carrera = 'La clave de carrera solo puede contener letras'
 					}
 
 					// Validacion semestre
-					if(!valores.semestre){
-						errores.semestre = 'Por favor ingresa un numero de semestre'
-					} else if(/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.semestre)){
-						errores.semestre = 'El semestre solo puede contener numeros'
+					if(!valores.num_semestre){
+						errores.num_semestre = 'Por favor ingresa un numero de semestre'
+					} else if(/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.num_semestre)){
+						errores.num_semestre = 'El semestre solo puede contener numeros'
 					}
 
 					return errores;
@@ -87,8 +108,7 @@ const Estudiante = () => {
 					resetForm();
 					console.log('Formulario enviado');
 					console.log(valores);
-					cambiarFormularioEnviado(true);
-					setTimeout(() => cambiarFormularioEnviado(false), 5000);
+					handleSubmit(valores);
 				}}
 			>
 				{( {errors} ) => (
@@ -117,35 +137,46 @@ const Estudiante = () => {
 						</div>
 
 						<div>
-							<label htmlFor="apellido">Apellidos</label>
+							<label htmlFor="primer_apellido">Primer apellido</label>
 							<Field
 								type="text" 
-								id="apellido" 
-								name="apellido" 
-								placeholder="Hernández Aguilar"
+								id="primer_apellido" 
+								name="primer_apellido" 
+								placeholder="Hernández"
 							/>
-							<ErrorMessage name="apellido" component={() => (<div className="error">{errors.apellido}</div>)} />
+							<ErrorMessage name="primer_apellido" component={() => (<div className="error">{errors.primer_apellido}</div>)} />
 						</div>
 
 						<div>
-							<label htmlFor="correo">Correo</label>
+							<label htmlFor="segundo_apellido">Segundo apellido</label>
 							<Field
 								type="text" 
-								id="correo" 
-								name="correo" 
+								id="segundo_apellido" 
+								name="segundo_apellido" 
+								placeholder="Aguilar"
+							/>
+							<ErrorMessage name="segundo_apellido" component={() => (<div className="error">{errors.segundo_apellido}</div>)} />
+						</div>
+
+						<div>
+							<label htmlFor="correo_estudiante">Correo</label>
+							<Field
+								type="text" 
+								id="correo_estudiante" 
+								name="correo_estudiante" 
 								placeholder="nombre@alumnos.udg.mx" 
 							/>
-							<ErrorMessage name="correo" component={() => (<div className="error">{errors.correo}</div>)} />
+							<ErrorMessage name="correo_estudiante" component={() => (<div className="error">{errors.correo_estudiante}</div>)} />
 						</div>
 
 						<div>
-							<label htmlFor="pass">Contraseña</label>
+							<label htmlFor="contrasena">Contraseña</label>
 							<Field
 								type="password" 
-								id="pass" 
-								name="pass"  
+								id="contrasena" 
+								name="contrasena"  
 							/>
-							<ErrorMessage name="pass" component={() => (<div className="error">{errors.pass}</div>)} />
+							<ErrorMessage name="contrasena" component={() => (<div className="error">{errors.contrasena}</div>)} />
 						</div>
 
 						<div>
@@ -154,41 +185,42 @@ const Estudiante = () => {
 						</div>
 
 						<div>
-							<label htmlFor="carrera">Carrera</label>
+							<label htmlFor="clave_carrera">Clave de carrera</label>
 							<Field
 								type="text" 
-								id="carrera" 
-								name="carrera" 
-								placeholder="Ingenieria en computacion" 
+								id="clave_carrera" 
+								name="clave_carrera" 
+								placeholder="INCO" 
 							/>
-							<ErrorMessage name="carrera" component={() => (<div className="error">{errors.carrera}</div>)} />
+							<ErrorMessage name="clave_carrera" component={() => (<div className="error">{errors.clave_carrera}</div>)} />
 						</div>
 
 						<div>
-							<label htmlFor="ciclo">Ciclo escolar</label>
+							<label htmlFor="ciclo_escolar">Ciclo escolar</label>
 							<Field
 								type="text" 
-								id="ciclo" 
-								name="ciclo" 
+								id="ciclo_escolar" 
+								name="ciclo_escolar" 
 								placeholder="2022B" 
 							/>
-							<ErrorMessage name="ciclo" component={() => (<div className="error">{errors.ciclo}</div>)} />
+							<ErrorMessage name="ciclo_escolar" component={() => (<div className="error">{errors.ciclo_escolar}</div>)} />
 						</div>
 
 						<div>
-							<label htmlFor="semestre">Semestre actual</label>
+							<label htmlFor="num_semestre">Semestre actual</label>
 							<Field
 								type="text" 
-								id="semestre" 
-								name="semestre" 
+								id="num_semestre" 
+								name="num_semestre" 
 								placeholder="1" 
 							/>
-							<ErrorMessage name="semestre" component={() => (<div className="error">{errors.semestre}</div>)} />
+							<ErrorMessage name="num_semestre" component={() => (<div className="error">{errors.num_semestre}</div>)} />
 						</div>
 
 						<div>
-							<label htmlFor="status">Estatus actual</label>
-							<Field name="status" as="select">
+							<label htmlFor="estatus">Estatus actual</label>
+							<Field name="estatus" as="select">
+								<option value="">Selecciona</option>
 								<option value="Activo">Activo</option>
 								<option value="Inactivo">Inactivo</option>
 								<option value="Graduado">Graduado</option>

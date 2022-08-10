@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import Estudiante from './Estudiante';
-//import Admin from './Admin';
-//import Home from './Home';
-//import Programa from './Programa';
 import App from './App';
-//import Login from './Login';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
