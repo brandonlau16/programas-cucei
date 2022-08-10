@@ -10,4 +10,4 @@ const ProgramaPrincipal = ({nombre, descripcion, telefono, correo, institucion, 
     );
   }
   
-  export default ProgramaPrincipal; 
+  export default ProgramaPrincipal;
