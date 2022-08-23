@@ -47,7 +47,7 @@ const Programas = () => {
       <div class="row mb-2">
         { !programas ? 'Cargando...' : 
           programas.map(programa => {
-            return <div class="col-md-6" key={programa.id}><CardPrograma nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
+            return <div class="col-md-6" key={programa.id}><CardPrograma id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
           })
         }
       </div>

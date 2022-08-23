@@ -3,6 +3,7 @@ import Estudiante from "./Estudiante";
 import Home from "./Home";
 import Login from "./Login";
 import PaginaMostrarProgramas from "./PaginaMostrarProgramas";
+import ProgramaInformacion from "./ProgramaInformacion";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/Home" element={<Home/>}/>
                 <Route path="/Registro" element={<Estudiante/>}/>
                 <Route path="/Programas/:tipo" element={<PaginaMostrarProgramas/>}/>
+                <Route path="/Programa/:tipo/:id" element={<ProgramaInformacion/>}/>
             </Routes>
         </div>
     );
