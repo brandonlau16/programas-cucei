@@ -71,7 +71,7 @@ const ProgramaInformacion = () => {
             <div class="row">
               { !programasTodos ? 'Cargando...' : 
               programasTodos.map(programa => {
-                  return <div key={programa.id}><Similares nombre={programa.nombre} descripcion={programa.descripcion} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
+                  return <div key={programa.id}><Similares id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
               })
               }
             </div>

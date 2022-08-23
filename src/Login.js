@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
-	const [estudiantes, setEstudiantes] = useState();
     const navigate = useNavigate();
 
     function handleClick (){
         navigate("/Registro");
     }
 
-    function handleClickHome (){
+    function handleClickHome (estudiantes){
+		localStorage.setItem('Alumno', JSON.stringify(estudiantes));
         navigate("/Home");
     }
 
@@ -27,10 +27,10 @@ const Login = () => {
 		
 		const response = await fetch (url, requestInit);
 		const responseJSON = await response.json();
-		setEstudiantes(responseJSON);
+		console.log(responseJSON);
 
-		if (estudiantes){
-			handleClickHome();
+		if (responseJSON){
+			handleClickHome(responseJSON);
 		}
 
 		cambiarFormularioEnviado(true);

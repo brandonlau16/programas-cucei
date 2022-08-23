@@ -29,7 +29,7 @@ const CardDatos = ({nombre, descripcion, telefono, correo, institucion, imagen, 
             <div class="mb-1 text-muted mb-3">Correo electronico: {correo}</div>
             
             <a href="#" class="btn btn-outline-secondary mb-3" margin-right="20px">Añadir a favoritos</a>
-            <a href="#" class="btn btn-outline-secondary">Inscribirse</a>
+            <a href="#" class="btn btn-outline-secondary">Postularme</a>
           </div>
         </div>
       </>

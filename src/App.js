@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import EditarPerfil from "./EditarPerfil";
 import Estudiante from "./Estudiante";
 import Home from "./Home";
 import Login from "./Login";
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/" element={<Login/>}/>
                 <Route path="/Home" element={<Home/>}/>
                 <Route path="/Registro" element={<Estudiante/>}/>
+                <Route path="/Perfil" element={<EditarPerfil/>}/>
                 <Route path="/Programas/:tipo" element={<PaginaMostrarProgramas/>}/>
                 <Route path="/Programa/:tipo/:id" element={<ProgramaInformacion/>}/>
             </Routes>

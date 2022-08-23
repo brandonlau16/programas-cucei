@@ -1,4 +1,5 @@
-const Similares = ({nombre, descripcion, institucion, imagen, tipo, clave}) => {
+const Similares = ({id, nombre, descripcion, institucion, imagen, tipo, clave}) => {
+    const url = "/Programa/" + tipo + "/" + id;
     return (
       <>
             <div class="container border rounded mb-3">
@@ -14,7 +15,7 @@ const Similares = ({nombre, descripcion, institucion, imagen, tipo, clave}) => {
                         <h5 class="mb-1">{nombre}</h5>
                         <div class="mb-1 text-muted">{institucion}</div>
                         <p class="card-text mb-auto">{descripcion}</p>
-                        <a href="#" class="stretched-link">Ver detalles</a>
+                        <a href={url}>Ver detalles</a>
                     </div>
                     <div class="col-4 d-none d-lg-block">
                         <svg class="bd-placeholder-img" width="100%" height="80%" xmlns="http://www.w3.org/2000/svg" role="img"

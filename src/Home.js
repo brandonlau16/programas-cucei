@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Barra from "./Barra";
 import Cards from './Cards';
 import './Home.css';
 
 function Home() {
   const [estadoBarra, cambiarEstadoBarra] = useState(false);
+  const [alumno, setAlumno] = useState('');
+
+  const getData = () => {
+    return localStorage.getItem('Alumno');
+  }
+
+  useEffect(() => {
+    setAlumno(getData());
+  }, []);
 
   return (
     <div className="App">
@@ -38,7 +47,7 @@ function Home() {
             </div>
           </div>
         </nav>
-        <Barra estado={estadoBarra} cambiarEstado={cambiarEstadoBarra}/>
+        <Barra alumno={alumno} estado={estadoBarra} cambiarEstado={cambiarEstadoBarra}/>
         <div class="texto-encima"> 
           <h4 class="titulo-home">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
           <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>

@@ -26,7 +26,7 @@ const Programas = () => {
   return (
     <>
       { !programas ? 'Cargando...' : 
-        <ProgramaPrincipal nombre={programas[programas.length - 1].nombre} descripcion={programas[programas.length - 1].descripcion} telefono={programas[programas.length - 1].telefono} correo={programas[programas.length - 1].correo} institucion={programas[programas.length - 1].institucion} imagen={programas[programas.length - 1].imagen} tipo={programas[programas.length - 1].tipo} clave={programas[programas.length - 1].carreras}/>
+        <ProgramaPrincipal id={programas[programas.length - 1].id} nombre={programas[programas.length - 1].nombre} descripcion={programas[programas.length - 1].descripcion} telefono={programas[programas.length - 1].telefono} correo={programas[programas.length - 1].correo} institucion={programas[programas.length - 1].institucion} imagen={programas[programas.length - 1].imagen} tipo={programas[programas.length - 1].tipo} clave={programas[programas.length - 1].carreras}/>
       }
 
       <div class="row mb-3">

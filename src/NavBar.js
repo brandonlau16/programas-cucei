@@ -4,7 +4,7 @@ const NavBar = () => {
   return (
     <div className="container">
       <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
-        <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <a href="/Home" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
           Programas CUCEI
         </a>
 
