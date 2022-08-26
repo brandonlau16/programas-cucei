@@ -228,6 +228,15 @@ const Estudiante = () => {
 							</Field>
 						</div>
 
+						<div>
+							<label htmlFor="foto">Foto de perfil</label>
+							<Field 
+								type="file" 
+								id="foto" 
+								name="foto"
+							/>
+						</div>
+
 						<button type="submit">Enviar</button>
 						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
 					</Form>

@@ -2,32 +2,28 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardPrograma from "./CardPrograma";
-import ProgramaPrincipal from "./ProgramaPrincipal";
 
-// const PROGRAMAS = [1, 2, 3, 4, 5, 6];
-
-const Programas = () => {
+const ProgramasFav = () => {
   const params = useParams();
   const navigate = useNavigate();
-  var anterior, siguiente, numBloques;
-  const [programas, setProgramas] = useState();
-  let bloques = [];
+  var anterior, siguiente;
 
-  if(params.num > 10){
+  if(params.num > 1){
     anterior = params.num - 10;
   }else{
     anterior = 1;
   }
 
-  if((parseInt(params.num) + 10) <= (numBloques * 10)){
+  if(params.num < 40){
     siguiente = parseInt(params.num) + 10;
   }else{
-    siguiente = params.num;
+    siguiente = 41;
   }
 
   const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/' + params.tipo;
-  const urlA = '/Programas/' + params.tipo + '/' + anterior;
-  const urlS = '/Programas/' + params.tipo + '/' + siguiente;
+  const urlA = '/Programas/Intercambio/' + anterior;
+  const urlS = '/Programas/Intercambio/' + siguiente;
+  const [programas, setProgramas] = useState();
   
   const fetchApi = async () => {
     const response = await fetch (url);
@@ -45,35 +41,12 @@ const Programas = () => {
     console.log(resultado);
   }
 
-  function Navegation() {
-    var urlBloque = '';
-    var n = 1;
-
-    if(bloques.length === 0){
-      bloques.push(<li class="page-item"><a href={urlA} class="page-link">Anterior</a></li>);
-    
-      for(var i=1; i <= numBloques ; i++){
-        urlBloque = '/Programas/' + params.tipo + '/' + n;
-        bloques.push(<li class="page-item"><a class="page-link" href={urlBloque}>{i}</a></li>);
-        n = n + 10;
-      }
-      
-      bloques.push(<li class="page-item"><a class="page-link" href={urlS}>Siguiente</a></li>);
-    }
-
-    return <nav aria-label="Page navigation example"><ul class="pagination justify-content-center">{bloques}</ul></nav>
-  }
-
   useEffect(() => {
     fetchApi();
   }, [])
 
   return (
     <>
-      { !programas ? 'Cargando...' : 
-        <ProgramaPrincipal id={programas[programas.length - 1].id} nombre={programas[programas.length - 1].nombre} descripcion={programas[programas.length - 1].descripcion} telefono={programas[programas.length - 1].telefono} correo={programas[programas.length - 1].correo} institucion={programas[programas.length - 1].institucion} imagen={programas[programas.length - 1].imagen} tipo={programas[programas.length - 1].tipo} clave={programas[programas.length - 1].carreras}/>
-      }
-
       <div class="row mb-3">
         <form class="container" onSubmit={handleSubmit}>
           <div class="row gx-2">
@@ -92,15 +65,28 @@ const Programas = () => {
       <div class="row mb-2">
         { !programas ? 'Cargando...' :
           programas.map(programa => {
-            numBloques = Math.floor(programas.length/10) + 1;
             return <div class="col-md-6" key={programa.id}><CardPrograma id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
           })
         }
       </div>
 
-      <Navegation/>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a href={urlA} class="page-link">Anterior</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="/Programas/Intercambio/1">1</a></li>
+          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/11">2</a></li>
+          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/21">3</a></li>
+          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/31">4</a></li>
+          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/41">5</a></li>
+          <li class="page-item">
+            <a class="page-link" href={urlS}>Siguiente</a>
+          </li>
+        </ul>
+      </nav>
     </>
   );
 }
 
-export default Programas;
+export default ProgramasFav;

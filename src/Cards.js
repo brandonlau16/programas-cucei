@@ -7,38 +7,38 @@ const cards = [
         title: 'Asesorías',
         image: 'https://www.wallpapertip.com/wmimgs/2-22162_dark-minimalist-desktop-backgrounds.jpg',
         info: 'Programa para retroalimentacion',
-        link: '/Programas/Asesorías'
+        link: '/Programas/Asesorías/1'
     },
     {
         id: 2,
         title: 'Becas',
         image: 'https://fondosmil.com/fondo/13692.png',
         info: 'Programa para recursos',
-        link: '/Programas/Beca'
+        link: '/Programas/Beca/1'
     },{
         id: 3,
         title: 'Intercambios',
         image: 'https://fondosmil.com/fondo/13700.jpg',
         info: 'Programa para estudios en extranjero',
-        link: '/Programas/Intercambio'
+        link: '/Programas/Intercambio/1'
     },{
         id: 4,
         title: 'Pasantías',
         image: 'https://fondosmil.com/fondo/13706.jpg',
         info: 'Programa para pasantias en empresas',
-        link: '/Programas/pasantía'
+        link: '/Programas/pasantía/1'
     },{
         id: 5,
         title: 'Practicas',
         image: 'https://www.todofondos.net/wp-content/uploads/4k-fondo-de-pantalla-minimalista-2-scaled.jpg',
         info: 'Programa para liberar creditos de practicas profesionales',
-        link: '/Programas/Prácticas'
+        link: '/Programas/Prácticas/1'
     },{
         id: 6,
         title: 'Trabajos',
         image: 'https://www.wallpapertip.com/wmimgs/20-200549_minimalist-desktop-wallpaper-hd.jpg',
         info: 'Programa para capacitacion laborar',
-        link: '/Programas/Trabajo'
+        link: '/Programas/Trabajo/1'
     }
 ]
 

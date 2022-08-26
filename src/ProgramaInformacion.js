@@ -28,6 +28,15 @@ const ProgramaInformacion = () => {
     console.log(responseJSONTodos);
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const busqueda = event.target.nombre.value;
+    const resultado = programasTodos.filter(programa => programa.nombre === busqueda);
+    const urlR = '/Programa/' + resultado[0].tipo + '/' + resultado[0].id;
+    window.location.replace(urlR);
+    console.log(resultado);
+  }
+
   useEffect(() => {
     fetchApi();
     fetchApiTodos();
@@ -41,10 +50,10 @@ const ProgramaInformacion = () => {
 
       <main className="container">
         <div class="row mb-3">
-          <form class="container">
+          <form class="container" onSubmit={handleSubmit}>
             <div class="row gx-2">
               <div class="col-11">
-                <input class="form-control" type="text" placeholder="Buscar..." aria-label="default input example" />
+                <input class="form-control" type="text" name="nombre" placeholder="Buscar..." aria-label="default input example" />
               </div>
               <div class="col">
                 <div class="d-grid gap-2">
