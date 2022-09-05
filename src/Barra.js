@@ -17,7 +17,7 @@ function Barra ({alumno, estado, cambiarEstado}) {
               <li><a href="/Perfil">Editar perfil</a></li>
               <li><a href="/Favoritos">Mis favoritos</a></li>
               <li><a href="#">Ayuda</a></li>
-              <li><a href="/" onClick={handleClickHome()}>Cerrar sesion</a></li>
+              <li><a href="/" onClick={() => handleClickHome()}>Cerrar sesion</a></li>
             </ul>
         </div>
       </div>

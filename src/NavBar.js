@@ -32,7 +32,7 @@ const NavBar = () => {
             <Dropdown.Item href="/Perfil">Mi perfil</Dropdown.Item>
             <Dropdown.Item href="/Favoritos">Mis programas</Dropdown.Item>
             <Dropdown.Item href="/">Ayuda</Dropdown.Item>
-            <Dropdown.Item href="/" onClick={handleClickHome()}>Cerrar sesión</Dropdown.Item>
+            <Dropdown.Item href="/" onClick={() => handleClickHome()}>Cerrar sesión</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
