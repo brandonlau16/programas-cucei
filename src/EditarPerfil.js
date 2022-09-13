@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ChatBot from "./Chatbot";
 import Footer from "./Footer";
 import FormEditar from "./FormEditar";
 import NavBar from "./NavBar";
@@ -20,7 +21,8 @@ const EditarPerfil = () => {
         <header className="p-3 mb-3 border-bottom">
             <NavBar></NavBar>
         </header>
-
+        
+        <ChatBot></ChatBot>
         <main className="container">
             <div class="row">
                 <div class="col-md-3">
