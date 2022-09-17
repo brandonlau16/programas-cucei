@@ -76,7 +76,7 @@ function ChatBot(){
   }
 
   useEffect(() => {     
-    const wsClient = new w3cwebsocket('ws://189.163.77.95:5050');
+    const wsClient = new w3cwebsocket('ws://IP:Puerto');
     setClient(wsClient);
 
     wsClient.onmessage  = async e => {
