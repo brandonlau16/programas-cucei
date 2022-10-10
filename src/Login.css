@@ -93,6 +93,11 @@ body {
 	color: #1f1f1f;
 }
 
+#checkadmin {
+	width: 15px;
+    height: 15px;
+}
+
 .formulario input:focus {
 	outline: none;
 	border: 2px solid #0085FF;

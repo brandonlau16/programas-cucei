@@ -8,11 +8,17 @@ import Similares from "./Similares";
 
 const ProgramaInformacion = () => {
   const params = useParams();
+  const getData = () => {
+    return JSON.parse(localStorage.getItem('Alumno'));
+  }
+
+  const [alumno, setAlumno] = useState(getData);
   
   const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programa/' + params.tipo + "/" + params.id;
   const urlTodos = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/' + params.tipo;
   const [programas, setProgramas] = useState();
   const [programasTodos, setProgramasTodos] = useState();
+  let programaEvitado = '';
   
   const fetchApi = async () => {
     const response = await fetch (url);
@@ -37,15 +43,20 @@ const ProgramaInformacion = () => {
     console.log(resultado);
   }
 
+  const cargar = async () => {
+    programaEvitado = programasTodos.filter(programaExcluido => programaExcluido.id !== programas[0].id);
+  }
+
   useEffect(() => {
     fetchApi();
     fetchApiTodos();
+    setAlumno(getData());
   }, [])
 
   return (
     <>
       <header className="p-3 mb-3 border-bottom">
-        <NavBar></NavBar>
+        <NavBar alumno={alumno}></NavBar>
       </header>
 
       <main className="container">
@@ -69,6 +80,7 @@ const ProgramaInformacion = () => {
             <div class="row mb-3">
               { !programas ? 'Cargando...' : 
               programas.map(programa => {
+                  cargar();
                   return <div key={programa.id}><CardDatos nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
               })
               }
@@ -78,8 +90,8 @@ const ProgramaInformacion = () => {
           <div class="col-md-4">
             <h3 class="mb-3">Otros similares</h3>
             <div class="row">
-              { !programasTodos ? 'Cargando...' : 
-              programasTodos.map(programa => {
+              { !programaEvitado ? 'Cargando...' :
+                  programaEvitado.map(programa => {
                   return <div key={programa.id}><Similares id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
               })
               }

@@ -4,8 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import CardPrograma from "./CardPrograma";
 import ProgramaPrincipal from "./ProgramaPrincipal";
 
-// const PROGRAMAS = [1, 2, 3, 4, 5, 6];
-
 const Programas = () => {
   const params = useParams();
   const navigate = useNavigate();

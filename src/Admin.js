@@ -4,118 +4,146 @@ import './Admin.css';
 
 const Admin = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+
+	const handleSubmit = (valores) => {
+		const requestInit = {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(valores)
+		}
+
+		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/administrador';
+		fetch (url, requestInit);
+		cambiarFormularioEnviado(true);
+		setTimeout(() => cambiarFormularioEnviado(false), 5000);
+	}
+
 	return (
 		<>
-			<div id="barra">
-				<ul>
-					<li><a href="Home.php">Home</a></li>
-					<li><a href="Soporte.php">Soporte</a></li>
-					<li><a href="Ayuda.php">Ayuda</a></li>
-					<li><a href="cerrar_sesion.php">Cerrar sesion</a></li>
-				</ul>
-			</div>
+			<div class="overlay-admin">
+				<div class="contenedor-texto-admin">
+					<div class="texto-encima-admin"> 
+						<h4 class="titulo-admin">BIENVENIDO A PROGRAMAS CUCEI! <br/><br/></h4>
+						<p>La plataforma que te proporciona los programas disponibles para tu carrera, crea tu perfil, navega y registrate a los programas que se ajusten a ti.</p>
+					</div>
+				</div>
 
-			<Formik
-				initialValues={{
-					nombre: '',
-					apellido: '',
-					correo: '',
-					pass: ''
+				<Formik
+					initialValues={{
+						nombre: '',
+						primer_apellido: '',
+						segundo_apellido: '',
+						correo: '',
+						contrasena: ''
+					}}
+					validate={(valores) => {
+						let errores = {};
 
-				}}
-				validate={(valores) => {
-					let errores = {};
+						// Validacion nombre
+						if(!valores.nombre){
+							errores.nombre = 'Por favor ingresa un nombre'
+						} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)){
+							errores.nombre = 'El nombre solo puede contener letras y espacios'
+						}
 
-					// Validacion nombre
-					if(!valores.nombre){
-						errores.nombre = 'Por favor ingresa un nombre'
-					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)){
-						errores.nombre = 'El nombre solo puede contener letras y espacios'
-					}
+						// Validacion primer apellido
+						if(!valores.primer_apellido){
+							errores.primer_apellido = 'Por favor ingresa tu primer apellido'
+						} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.primer_apellido)){
+							errores.primer_apellido = 'El apellido solo pueden contener letras y espacios'
+						}
 
-					// Validacion apellido
-					if(!valores.apellido){
-						errores.apellido = 'Por favor ingresa tus apellidos'
-					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido)){
-						errores.apellido = 'Los apellidos solo pueden contener letras y espacios'
-					}
+						// Validacion segundo apellido
+						if(!valores.segundo_apellido){
+							errores.segundo_apellido = 'Por favor ingresa tu segundo apellido'
+						} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.segundo_apellido)){
+							errores.segundo_apellido = 'El apellido solo pueden contener letras y espacios'
+						}
 
-					// Validacion correo
-					if(!valores.correo){
-						errores.correo = 'Por favor ingresa un correo electronico'
-					} else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.correo)){
-						errores.correo = 'El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
-					}
+						// Validacion correo
+						if(!valores.correo){
+							errores.correo = 'Por favor ingresa un correo electronico'
+						} else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.correo)){
+							errores.correo = 'El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
+						}
 
-					// Validacion pass
-					if(!valores.pass){
-						errores.pass = 'Por favor ingresa una contraseña'
-					} else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/.test(valores.pass)){
-						errores.pass = 'La contraseña debe tener minimo 8 caracteres, maximo 15, al menos una letra mayúscula, al menos una letra minucula, al menos un dígito, no espacios en blanco, al menos 1 caracter especial.'
-					}
+						// Validacion contrasena
+						if(!valores.contrasena){
+							errores.contrasena = 'Por favor ingresa una contraseña'
+						} else if(!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/.test(valores.contrasena)){
+							errores.contrasena = 'La contraseña debe tener minimo 8 caracteres, maximo 15, al menos una letra mayúscula, al menos una letra minucula, al menos un dígito, no espacios en blanco, al menos 1 caracter especial.'
+						}
 
-					return errores;
-				}}
-				onSubmit={(valores, {resetForm}) => {
-					resetForm();
-					console.log('Formulario enviado');
-					cambiarFormularioEnviado(true);
-					setTimeout(() => cambiarFormularioEnviado(false), 5000);
-				}}
-			>
-				{( {errors} ) => (
-					<Form className="formulario">
-						<div>
-							<label htmlFor="nombre">Nombre</label>
-							<Field
-								type="text" 
-								id="nombre" 
-								name="nombre" 
-								placeholder="Juan Alberto"
-							/>
-							<ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
-						</div>
+						return errores;
+					}}
+					onSubmit={(valores, {resetForm}) => {
+						resetForm();
+						console.log('Formulario enviado');
+						console.log(valores);
+						handleSubmit(valores);
+					}}
+				>
+					{( {errors} ) => (
+						<Form className="formulario-admin">
+							<div>
+								<label htmlFor="nombre">Nombre</label>
+								<Field
+									type="text" 
+									id="nombre" 
+									name="nombre" 
+									placeholder="Juan Alberto"
+								/>
+								<ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
+							</div>
 
-						<div>
-							<label htmlFor="apellido">Apellidos</label>
-							<Field
-								type="text" 
-								id="apellido" 
-								name="apellido" 
-								placeholder="Hernández Aguilar"
-							/>
-							<ErrorMessage name="apellido" component={() => (<div className="error">{errors.apellido}</div>)} />
-						</div>
+							<div>
+								<label htmlFor="primer_apellido">Primer apellido</label>
+								<Field
+									type="text" 
+									id="primer_apellido" 
+									name="primer_apellido" 
+									placeholder="Hernández"
+								/>
+								<ErrorMessage name="primer_apellido" component={() => (<div className="error">{errors.primer_apellido}</div>)} />
+							</div>
 
-						<div>
-							<label htmlFor="correo">Correo</label>
-							<Field
-								type="text" 
-								id="correo" 
-								name="correo" 
-								placeholder="nombre@alumnos.udg.mx" 
-							/>
-							<ErrorMessage name="correo" component={() => (<div className="error">{errors.correo}</div>)} />
-						</div>
+							<div>
+								<label htmlFor="segundo_apellido">Segundo apellido</label>
+								<Field
+									type="text" 
+									id="segundo_apellido" 
+									name="segundo_apellido" 
+									placeholder="Aguilar"
+								/>
+								<ErrorMessage name="segundo_apellido" component={() => (<div className="error">{errors.segundo_apellido}</div>)} />
+							</div>
 
-						<div>
-							<label htmlFor="pass">Contraseña</label>
-							<Field
-								type="pass" 
-								id="pass" 
-								name="pass"  
-							/>
-							<ErrorMessage name="pass" component={() => (<div className="error">{errors.pass}</div>)} />
-						</div>
+							<div>
+								<label htmlFor="correo">Correo</label>
+								<Field
+									type="text" 
+									id="correo" 
+									name="correo" 
+									placeholder="nombre@alumnos.udg.mx" 
+								/>
+								<ErrorMessage name="correo" component={() => (<div className="error">{errors.correo}</div>)} />
+							</div>
 
-						<button type="submit">Enviar</button>
-						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
-					</Form>
-				)}
-			</Formik>
+							<div>
+								<label htmlFor="contrasena">Contraseña</label>
+								<Field
+									type="password" 
+									id="contrasena" 
+									name="contrasena"  
+								/>
+								<ErrorMessage name="contrasena" component={() => (<div className="error">{errors.contrasena}</div>)} />
+							</div>
 
-			<div className="App-footer">
-				<div>Derechos reservados &copy; Programas CUCEI | Terminos y condiciones | Facebook & Instagram @ProgramasCUCEI | 2022</div>
+							<button type="submit">Enviar</button>
+							{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+						</Form>
+					)}
+				</Formik>
 			</div>
 		</>
 	);

@@ -19,14 +19,15 @@ const EditarPerfil = () => {
     return (
         <>
         <header className="p-3 mb-3 border-bottom">
-            <NavBar></NavBar>
+            <NavBar alumno={alumno}></NavBar>
         </header>
-        
+
         <ChatBot></ChatBot>
+        
         <main className="container">
             <div class="row">
                 <div class="col-md-3">
-                    <img width="250px" height="250px"></img>
+                    <img src={alumno[0].foto} width="250px" height="250px"></img>
                 </div>
                 <div class="col mb-3">
                     <p>Codigo: {alumno[0].codigo}</p>

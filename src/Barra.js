@@ -13,7 +13,7 @@ function Barra ({alumno, estado, cambiarEstado}) {
       <div class="overlay-barra" onClick={() => cambiarEstado(false)}>
         <div class="barra">
             <ul>
-              <li><img src="https://www.caritas.org.mx/wp-content/uploads/2019/02/cualidades-persona-humanitaria.jpg" alt="" id="perfil"/></li><br/>
+              <li><img src={alumno[0].foto} alt="" id="perfil"/></li><br/>
               <li><a href="/Perfil">Editar perfil</a></li>
               <li><a href="/Favoritos">Mis favoritos</a></li>
               <li><a href="#">Ayuda</a></li>

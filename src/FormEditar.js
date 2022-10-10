@@ -5,17 +5,20 @@ import './FormEditar.css';
 function FormEditar ({alumno, estado, cambiarEstado}) {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
-	const handleSubmit = (valores) => {
-		/*const requestInit = {
-			method: 'POST',
+	const handleSubmit = async (valores) => {
+		const requestInit = {
+			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(valores)
 		}
 
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudiante';
 		fetch (url, requestInit);
+
+        // codigo para obtener los nuevos datos de la bd
 		cambiarFormularioEnviado(true);
-		setTimeout(() => cambiarFormularioEnviado(false), 5000);*/
+		setTimeout(() => cambiarFormularioEnviado(false), 5000);
+        //localStorage.setItem('Alumno', JSON.stringify(estudiantes));  se necesita actualizar la info del estudiante
         cambiarEstado(false);
 	}
 
@@ -25,17 +28,18 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
             <div>
                 <Formik
                     initialValues={{
-                        codigo: '',
-                        nombre: '',
-                        primer_apellido: '',
-                        segundo_apellido: '',
-                        contrasena: '',
-                        clave_carrera: '',
-                        ciclo_escolar: '',
-                        num_semestre: '',
-                        estatus: '',
-                        correo_estudiante: '',
-                        descripcion: '',
+                        codigoOri: alumno[0].codigo,
+                        codigo: alumno[0].codigo,
+                        nombre: alumno[0].nombre,
+                        primer_apellido: alumno[0].primer_apellido,
+                        segundo_apellido: alumno[0].segundo_apellido,
+                        contrasena: alumno[0].contrasena,
+                        clave_carrera: alumno[0].clave_carrera,
+                        ciclo_escolar: alumno[0].ciclo_escolar,
+                        num_semestre: alumno[0].num_semestre,
+                        estatus: alumno[0].estatus,
+                        correo_estudiante: alumno[0].correo_estudiante,
+                        descripcion: alumno[0].descripcion,
                         foto: ''
                     }}
                     validate={(valores) => {
@@ -113,8 +117,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                 <Field
                                     type="text" 
                                     id="codigo" 
-                                    name="codigo" 
-                                    placeholder="215483684"
+                                    name="codigo"
                                 />
                                 <ErrorMessage name="codigo" component={() => (<div className="error">{errors.codigo}</div>)} />
                             </div>
@@ -124,8 +127,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                 <Field
                                     type="text" 
                                     id="nombre" 
-                                    name="nombre" 
-                                    placeholder="Juan Alberto"
+                                    name="nombre"
                                 />
                                 <ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
                             </div>
@@ -136,7 +138,6 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     type="text" 
                                     id="primer_apellido" 
                                     name="primer_apellido" 
-                                    placeholder="Hernández"
                                 />
                                 <ErrorMessage name="primer_apellido" component={() => (<div className="error">{errors.primer_apellido}</div>)} />
                             </div>
@@ -147,7 +148,6 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     type="text" 
                                     id="segundo_apellido" 
                                     name="segundo_apellido" 
-                                    placeholder="Aguilar"
                                 />
                                 <ErrorMessage name="segundo_apellido" component={() => (<div className="error">{errors.segundo_apellido}</div>)} />
                             </div>
@@ -158,7 +158,6 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     type="text" 
                                     id="correo_estudiante" 
                                     name="correo_estudiante" 
-                                    placeholder="nombre@alumnos.udg.mx" 
                                 />
                                 <ErrorMessage name="correo_estudiante" component={() => (<div className="error">{errors.correo_estudiante}</div>)} />
                             </div>
@@ -184,7 +183,6 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     type="text" 
                                     id="clave_carrera" 
                                     name="clave_carrera" 
-                                    placeholder="INCO" 
                                 />
                                 <ErrorMessage name="clave_carrera" component={() => (<div className="error">{errors.clave_carrera}</div>)} />
                             </div>
@@ -195,7 +193,6 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     type="text" 
                                     id="ciclo_escolar" 
                                     name="ciclo_escolar" 
-                                    placeholder="2022B" 
                                 />
                                 <ErrorMessage name="ciclo_escolar" component={() => (<div className="error">{errors.ciclo_escolar}</div>)} />
                             </div>
@@ -206,7 +203,6 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     type="text" 
                                     id="num_semestre" 
                                     name="num_semestre" 
-                                    placeholder="1" 
                                 />
                                 <ErrorMessage name="num_semestre" component={() => (<div className="error">{errors.num_semestre}</div>)} />
                             </div>
@@ -220,6 +216,15 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     <option value="Graduado">Graduado</option>
                                     <option value="Egresado">Egresado</option>
                                 </Field>
+                            </div>
+
+                            <div>
+                                <label htmlFor="foto">Foto de perfil</label>
+                                <Field 
+                                    type="file" 
+                                    id="foto" 
+                                    name="foto"
+                                />
                             </div>
 
                             <button type="submit">Enviar</button>

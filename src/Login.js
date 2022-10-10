@@ -11,6 +11,10 @@ const Login = () => {
         navigate("/Registro");
     }
 
+	function handleClickAdmin (){
+        navigate("/Administrador");
+    }
+
     function handleClickHome (estudiantes){
 		localStorage.setItem('Alumno', JSON.stringify(estudiantes));
         navigate("/Home");
@@ -48,7 +52,8 @@ const Login = () => {
 			<Formik
 				initialValues={{
 					correo_estudiante: '',
-					contrasena: ''
+					contrasena: '', 
+					checkadmin: false
 				}}
 				validate={(valores) => {
 					let errores = {};
@@ -102,8 +107,22 @@ const Login = () => {
 							<ErrorMessage name="contrasena" component={() => (<div className="error">{errors.contrasena}</div>)} />
 						</div>
 
+						<div class="row">
+							<div class="col-md-1">
+							<Field 
+								type="checkbox" 
+								id="checkadmin"
+								name="checkadmin" 
+							/>
+							</div>
+							<div class="col">
+								<label htmlFor="checkadmin">Iniciar sesion como administrador</label>
+							</div>
+						</div>
+
 						<button type="submit">Iniciar sesión</button><br/>
-                        <label htmlFor="registrar">¿No tienes cuenta? <a onClick={handleClick} class="registro">Regístrarte</a></label>
+                        <label htmlFor="registrar">¿No tienes cuenta? <a onClick={handleClick} class="registro">Regístrate</a></label>
+						<label htmlFor="admin">¿Eres administrador? <a onClick={handleClickAdmin} class="admin">Regístrate como administrador</a></label>
 						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
 					</Form>
 				)}

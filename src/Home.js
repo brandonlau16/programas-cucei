@@ -4,12 +4,12 @@ import Cards from './Cards';
 import './Home.css';
 
 function Home() {
-  const [estadoBarra, cambiarEstadoBarra] = useState(false);
-  const [alumno, setAlumno] = useState('');
-
   const getData = () => {
-    return localStorage.getItem('Alumno');
+    return JSON.parse(localStorage.getItem('Alumno'));
   }
+  
+  const [estadoBarra, cambiarEstadoBarra] = useState(false);
+  const [alumno, setAlumno] = useState(getData);
 
   useEffect(() => {
     setAlumno(getData());
@@ -41,7 +41,7 @@ function Home() {
             <div class="icono">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <img src="https://www.caritas.org.mx/wp-content/uploads/2019/02/cualidades-persona-humanitaria.jpg" id="circulo" onClick={() => cambiarEstadoBarra(!estadoBarra)}/>
+                  <img src={alumno[0].foto} id="circulo" onClick={() => cambiarEstadoBarra(!estadoBarra)}/>
                 </li>
               </ul>
             </div>
