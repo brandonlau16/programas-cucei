@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import Programas from "./Programas";
+import ChatBot from "./Chatbot";
 
 const PaginaMostrarProgramas = () => {
   const getData = () => {
@@ -25,6 +26,7 @@ const PaginaMostrarProgramas = () => {
       </main>
 
       <Footer></Footer>
+      <ChatBot></ChatBot>
     </>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Barra from "./Barra";
 import Cards from './Cards';
 import './Home.css';
+import ChatBot from "./Chatbot";
 
 function Home() {
   const getData = () => {
@@ -61,6 +62,7 @@ function Home() {
       <body className="App-footer">
         <div>Derechos reservados &copy; Programas CUCEI | Terminos y condiciones | Facebook & Instagram @ProgramasCUCEI | 2022</div>
       </body>
+      <ChatBot></ChatBot>
     </div>
   );
 }

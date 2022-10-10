@@ -80,7 +80,7 @@ function ChatBot() {
   };
 
   useEffect(() => {
-    const wsClient = new w3cwebsocket("ws://IP:Puerto");
+    const wsClient = new w3cwebsocket(process.env.REACT_APP_CHATBOT_URL);
     setClient(wsClient);
 
     wsClient.onmessage = async (e) => {
@@ -139,7 +139,7 @@ function ChatBot() {
             src="https://www.ecured.cu/images/f/f5/Bot.jpg"
             alt="imagenBot"
           />
-          <p className="nombre-bot">nombre del bot</p>
+          <p className="nombre-bot">Asistente Virtual</p>
           <AiOutlineClose
             className="icono-x"
             onClick={() => cambiarEstadoChat(chatAbierto)}
