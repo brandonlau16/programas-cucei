@@ -1,0 +1,143 @@
+.App {
+    text-align: center;
+    background: rgb(154,154,154);
+    background: linear-gradient(0deg, rgba(154,154,154,1) 0%, rgba(232,232,232,1) 100%); 
+  }
+    
+  .App-header {
+    height: 400px;
+    width: 100%;
+    background: url("https://www.xtrafondos.com/wallpapers/montanas-en-bosque-minimalista-flat-3306.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .texto-encima{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(0, 0, 0, 0.60);
+  }
+  
+  .titulo-home {
+    font-weight: bold;
+  }
+  
+  .navbar-nav li:hover .barra {
+    display: block;
+    width: 25vh;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 1);
+  }
+  
+  .blue{
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .cards-header {
+    height: 100%;
+    width: 100%;
+    padding: 100px 0px 100px 0px;
+  }
+  
+  .overlay-barra {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-content: center;
+    justify-content: right;
+  }
+  
+  .barra {
+    width: 17vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+  }
+    
+  .barra ul {
+    padding: 0;
+    list-style: none;
+  }
+    
+  .barra li {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    padding-top: 3%;
+    padding-right: 8%;
+  }
+  
+  .barra li:first-of-type {
+    width: 100%;
+    height: 100%;
+    padding-top: 0%;
+  }
+  
+  .barra li a {
+    font-size: 12px;
+    color: white;
+  }
+  
+  #perfil {
+    width: 170px;
+    height: 170px;
+    border-radius: 100%;
+    margin: 3px;
+  }
+  
+  .barra:hover li:hover{
+    background-color: rgba(201, 46, 175, 0.562);
+  }
+  
+  .barra:hover li:hover:first-of-type{
+    background-color: transparent;
+  }
+  
+  #circulo {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+    
+  .App-footer {
+    height: 200px;
+    line-height: 50px;
+    background: black;
+    color: white;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    flex: 0 0 auto;
+    font-size: 14px;
+  }
+  
+  @media screen and (max-width: 1000px) {
+      .texto-encima {
+      margin-top: 18%;
+      transform: none;
+      font-size: 14px;
+      position: static;
+    }
+  
+    .App-footer {
+      font-size: 12px;
+    }
+  
+    .barra {
+      width: 30vw;
+    }
+  
+    #perfil {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+    

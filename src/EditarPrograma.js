@@ -1,19 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import './Programa.css';
-import NavBarAdmin from './NavBarAdmin';
-import FooterAdmin from './FooterAdmin';
+import './EditarPrograma.css';
 
-const Programa = () => {
+const EditarPrograma = ({objeto}) => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
-
-	const getData = () => {
-        return JSON.parse(localStorage.getItem('Alumno'));
-    }
 
 	const handleSubmit = (valores) => {
 		const requestInit = {
-			method: 'POST',
+			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(valores)
 		}
@@ -24,18 +18,8 @@ const Programa = () => {
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
 	}
 
-    const [alumno, setAlumno] = useState(getData);
-
-    useEffect(() => {
-        setAlumno(getData());
-    }, []);
-
 	return (
 		<>
-			<header className="p-3 mb-3 border-bottom">
-				<NavBarAdmin alumno={alumno}></NavBarAdmin>
-			</header>
-
 			<div class="container">
 				<Formik
 					initialValues={{
@@ -46,8 +30,7 @@ const Programa = () => {
 						institucion: '',
 						foto: '',
 						tipo: '',
-						carreras: []
-
+						carreras: ''
 					}}
 					validate={(valores) => {
 						let errores = {};
@@ -90,21 +73,21 @@ const Programa = () => {
 					}}
 				>
 					{( {errors} ) => (
-						<Form className="formulario-programa">
+						<Form className="formulario-programa-editar">
 							<div>
 								<label htmlFor="nombre">Nombre del programa</label>
 								<Field
 									type="text" 
 									id="nombre" 
-									name="nombre" 
-									placeholder="Beca economica de BOSCH"
+									name="nombre"
+                                    placeholder={objeto.nombre}
 								/>
 								<ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
 							</div>
 
 							<div>
 								<label htmlFor="descripcion">Descripcion del programa</label>
-								<Field name="descripcion" as="textarea" placeholder="Escribe la descripcion del programa" />
+								<Field name="descripcion" as="textarea" placeholder={objeto.descripcion}/>
 							</div>
 
 							<div>
@@ -112,8 +95,8 @@ const Programa = () => {
 								<Field
 									type="text" 
 									id="telefono" 
-									name="telefono" 
-									placeholder="3365784684" 
+									name="telefono"
+                                    placeholder={objeto.telefono}
 								/>
 								<ErrorMessage name="telefono" component={() => (<div className="error">{errors.telefono}</div>)} />
 							</div>
@@ -123,8 +106,8 @@ const Programa = () => {
 								<Field
 									type="text" 
 									id="correo" 
-									name="correo" 
-									placeholder="nombre@intitucion.com" 
+									name="correo"
+                                    placeholder={objeto.correo}
 								/>
 								<ErrorMessage name="correo" component={() => (<div className="error">{errors.correo}</div>)} />
 							</div>
@@ -134,8 +117,8 @@ const Programa = () => {
 								<Field
 									type="text" 
 									id="institucion" 
-									name="institucion" 
-									placeholder="Bosch" 
+									name="institucion"
+                                    placeholder={objeto.institucion}
 								/>
 								<ErrorMessage name="institucion" component={() => (<div className="error">{errors.institucion}</div>)} />
 							</div>
@@ -145,8 +128,8 @@ const Programa = () => {
 								<Field
 									type="text" 
 									id="tipo" 
-									name="tipo" 
-									placeholder="Trabajo" 
+									name="tipo"
+                                    placeholder={objeto.tipo}
 								/>
 							</div>
 
@@ -182,10 +165,8 @@ const Programa = () => {
 					)}
 				</Formik>
 			</div>
-
-			<FooterAdmin></FooterAdmin>
 		</>
 	);
 }
  
-export default Programa;
+export default EditarPrograma;

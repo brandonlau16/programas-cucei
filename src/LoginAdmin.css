@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 
-.overlay-login {
+.overlay-login-admin {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -19,16 +19,16 @@
     background-size: contain;
 }
 
-.texto-encima-login {
+.texto-encima-login-admin {
     position: absolute;
     color: rgba(0, 0, 0, 0.60);
 }
 
-.titulo-login {
+.titulo-login-admin {
     font-weight: bold;
 }
 
-.contenedor-texto-login {
+.contenedor-texto-login-admin {
     position: absolute;
     top: 21%;
     left: 7%;
@@ -135,7 +135,7 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-	.contenedor-texto-login {
+	.contenedor-texto-login-admin {
 		top: 5%;
 		left: 5%;
 		right: 5%;

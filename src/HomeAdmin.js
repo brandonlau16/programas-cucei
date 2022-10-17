@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Barra from "./Barra";
-import Cards from './Cards';
-import './Home.css';
+import './HomeAdmin.css';
 import ChatBot from "./Chatbot";
-import Footer from "./Footer";
+import CardsAdmin from "./CardsAdmin";
+import FooterAdmin from "./FooterAdmin";
 
-function Home() {
+function HomeAdmin() {
   const getData = () => {
     return JSON.parse(localStorage.getItem('Alumno'));
   }
@@ -57,13 +57,13 @@ function Home() {
       </div>
 
       <div className="cards-header">
-        <Cards/>
+        <CardsAdmin/>
       </div>
 
-      <Footer></Footer>
+      <FooterAdmin></FooterAdmin>
       <ChatBot></ChatBot>
     </div>
   );
 }
 
-export default Home;
+export default HomeAdmin;

@@ -33,7 +33,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                         nombre: alumno[0].nombre,
                         primer_apellido: alumno[0].primer_apellido,
                         segundo_apellido: alumno[0].segundo_apellido,
-                        contrasena: alumno[0].contrasena,
+                        contrasena: '',
                         clave_carrera: alumno[0].clave_carrera,
                         ciclo_escolar: alumno[0].ciclo_escolar,
                         num_semestre: alumno[0].num_semestre,

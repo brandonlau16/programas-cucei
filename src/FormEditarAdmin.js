@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import './Admin.css';
+import './FormEditarAdmin.css';
 
-const Admin = () => {
+const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
 	const handleSubmit = (valores) => {
 		const requestInit = {
-			method: 'POST',
+			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(valores)
 		}
@@ -16,24 +16,19 @@ const Admin = () => {
 		fetch (url, requestInit);
 		cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
+        cambiarEstado(false);
 	}
 
 	return (
 		<>
-			<div class="overlay-admin">
-				<div class="contenedor-texto-admin">
-					<div class="texto-encima-admin"> 
-						<h4 class="titulo-admin">BIENVENIDO A PROGRAMAS CUCEI! <br/><br/></h4>
-						<p>La plataforma que te proporciona los programas disponibles para tu carrera, crea tu perfil, navega y registrate a los programas que se ajusten a ti.</p>
-					</div>
-				</div>
-
+        {estado &&
+			<div>
 				<Formik
 					initialValues={{
-						nombre: '',
-						primer_apellido: '',
-						segundo_apellido: '',
-						correo: '',
+						nombre: alumno[0].nombre,
+						primer_apellido: alumno[0].primer_apellido,
+						segundo_apellido: alumno[0].segundo_apellido,
+						correo: alumno[0].correo_estudiante,
 						contrasena: ''
 					}}
 					validate={(valores) => {
@@ -84,7 +79,7 @@ const Admin = () => {
 					}}
 				>
 					{( {errors} ) => (
-						<Form className="formulario-admin">
+						<Form className="formulario-editar-admin">
 							<div>
 								<label htmlFor="nombre">Nombre</label>
 								<Field
@@ -145,8 +140,9 @@ const Admin = () => {
 					)}
 				</Formik>
 			</div>
+        }
 		</>
 	);
 }
  
-export default Admin;
+export default FormEditarAdmin;
