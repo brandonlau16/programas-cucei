@@ -23,7 +23,7 @@ const LoginAdmin = () => {
 			body: JSON.stringify(valores)
 		}
 
-		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/login';
+		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/loginAdministrador';
 		
 		const response = await fetch (url, requestInit);
 		const responseJSON = await response.json();

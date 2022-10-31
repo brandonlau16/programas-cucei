@@ -5,7 +5,7 @@ import './FormEditarAdmin.css';
 const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
-	const handleSubmit = (valores) => {
+	const handleSubmit = async (valores) => {
 		const requestInit = {
 			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
@@ -14,9 +14,25 @@ const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/administrador';
 		fetch (url, requestInit);
-		cambiarFormularioEnviado(true);
+
+		const requestInitNuevo = {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(valores)
+		}
+
+		const urlNuevo = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/administradorDatos';
+        const response = await fetch (urlNuevo, requestInitNuevo);
+        const responseJSON = await response.json();
+
+        localStorage.setItem('Alumno', JSON.stringify(responseJSON));
+
+        console.log(responseJSON);
+
+        cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
         cambiarEstado(false);
+        window.location.reload();
 	}
 
 	return (
@@ -25,11 +41,12 @@ const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 			<div>
 				<Formik
 					initialValues={{
+						id: alumno[0].id,
 						nombre: alumno[0].nombre,
 						primer_apellido: alumno[0].primer_apellido,
 						segundo_apellido: alumno[0].segundo_apellido,
-						correo: alumno[0].correo_estudiante,
-						contrasena: ''
+						correo: alumno[0].correo,
+						contrasena: alumno[0].contrasena
 					}}
 					validate={(valores) => {
 						let errores = {};

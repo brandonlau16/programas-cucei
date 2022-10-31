@@ -40,8 +40,7 @@ const Estudiante = () => {
 					num_semestre: '',
 					estatus: '',
 					correo_estudiante: '',
-					descripcion: '',
-					foto: ''
+					descripcion: ''
 				}}
 				validate={(valores) => {
 					let errores = {};
@@ -226,15 +225,6 @@ const Estudiante = () => {
 								<option value="Graduado">Graduado</option>
 								<option value="Egresado">Egresado</option>
 							</Field>
-						</div>
-
-						<div>
-							<label htmlFor="foto">Foto de perfil</label>
-							<Field 
-								type="file" 
-								id="foto" 
-								name="foto"
-							/>
 						</div>
 
 						<button type="submit">Enviar</button>

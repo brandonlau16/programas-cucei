@@ -4,6 +4,7 @@ import './HomeAdmin.css';
 import ChatBot from "./Chatbot";
 import CardsAdmin from "./CardsAdmin";
 import FooterAdmin from "./FooterAdmin";
+import NavBarAdmin from "./NavBarAdmin";
 
 function HomeAdmin() {
   const getData = () => {
@@ -37,19 +38,7 @@ function HomeAdmin() {
       ></script>
 
       <div className="App-header">
-        <nav class="navbar navbar-expand-lg navbar-dark blue fixed" id="menu">
-          <div class="container">
-            <a class="navbar-brand">Programas CUCEI</a>
-            <div class="icono">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <img src={alumno[0].foto} id="circulo" onClick={() => cambiarEstadoBarra(!estadoBarra)}/>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <Barra alumno={alumno} estado={estadoBarra} cambiarEstado={cambiarEstadoBarra}/>
+        <NavBarAdmin alumno={alumno}></NavBarAdmin>
         <div class="texto-encima"> 
           <h4 class="titulo-home">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
           <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>

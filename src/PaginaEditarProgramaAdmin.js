@@ -13,13 +13,13 @@ const PaginaEditarProgramaAdmin = () => {
   }
 
   const [alumno, setAlumno] = useState(getData);
+  const [estadoForm, cambiarEstadoForm] = useState(false);
   
   const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programa/' + params.tipo + "/" + params.id;
   const urlTodos = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/' + params.tipo;
   const [programas, setProgramas] = useState();
   const [programasTodos, setProgramasTodos] = useState();
   let programaEvitado = '';
-  let objeto = '';
   
   const fetchApi = async () => {
     const response = await fetch (url);
@@ -46,7 +46,7 @@ const PaginaEditarProgramaAdmin = () => {
 
   const cargar = async () => {
     programaEvitado = programasTodos.filter(programaExcluido => programaExcluido.id !== programas[0].id);
-    objeto = programas[0];
+    console.log("Este es:", programas[0].nombre);
   }
 
   useEffect(() => {
@@ -82,8 +82,7 @@ const PaginaEditarProgramaAdmin = () => {
             <div class="row mb-3">
               { !programas ? 'Cargando...' : 
               programas.map(programa => {
-                  cargar();
-                  return <div key={programa.id}><CardDatosAdmin nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
+                  return <div key={programa.id}><CardDatosAdmin nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/><a onClick={() => cambiarEstadoForm(!estadoForm)} class="btn btn-outline-secondary w-100">Editar datos</a></div>
               })
               }
             </div>
@@ -91,7 +90,7 @@ const PaginaEditarProgramaAdmin = () => {
 
           <div class="col-md-6">
             <div class="row mb-3">
-              <EditarPrograma objeto={objeto}></EditarPrograma>
+              <EditarPrograma datos={programas} estado={estadoForm} cambiarEstado={cambiarEstadoForm}/>
             </div>
           </div>
         </div>

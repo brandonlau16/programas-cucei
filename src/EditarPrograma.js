@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './EditarPrograma.css';
 
-const EditarPrograma = ({objeto}) => {
+const EditarPrograma = ({datos, estado, cambiarEstado}) => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
 	const handleSubmit = (valores) => {
@@ -16,21 +16,24 @@ const EditarPrograma = ({objeto}) => {
 		fetch (url, requestInit);
 		cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
+		cambiarEstado(false);
 	}
 
 	return (
 		<>
+		{estado &&
 			<div class="container">
 				<Formik
 					initialValues={{
-						nombre: '',
-						descripcion: '',
-						telefono: '',
-						correo: '',
-						institucion: '',
+						id: datos[0].id,
+						nombre: datos[0].nombre,
+						descripcion: datos[0].descripcion,
+						telefono: datos[0].telefono,
+						correo: datos[0].correo,
+						institucion: datos[0].institucion,
 						foto: '',
-						tipo: '',
-						carreras: ''
+						tipo: datos[0].tipo,
+						carreras: datos[0].carreras
 					}}
 					validate={(valores) => {
 						let errores = {};
@@ -80,14 +83,13 @@ const EditarPrograma = ({objeto}) => {
 									type="text" 
 									id="nombre" 
 									name="nombre"
-                                    placeholder={objeto.nombre}
 								/>
 								<ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
 							</div>
 
 							<div>
 								<label htmlFor="descripcion">Descripcion del programa</label>
-								<Field name="descripcion" as="textarea" placeholder={objeto.descripcion}/>
+								<Field name="descripcion" as="textarea"/>
 							</div>
 
 							<div>
@@ -96,7 +98,6 @@ const EditarPrograma = ({objeto}) => {
 									type="text" 
 									id="telefono" 
 									name="telefono"
-                                    placeholder={objeto.telefono}
 								/>
 								<ErrorMessage name="telefono" component={() => (<div className="error">{errors.telefono}</div>)} />
 							</div>
@@ -107,7 +108,6 @@ const EditarPrograma = ({objeto}) => {
 									type="text" 
 									id="correo" 
 									name="correo"
-                                    placeholder={objeto.correo}
 								/>
 								<ErrorMessage name="correo" component={() => (<div className="error">{errors.correo}</div>)} />
 							</div>
@@ -118,7 +118,6 @@ const EditarPrograma = ({objeto}) => {
 									type="text" 
 									id="institucion" 
 									name="institucion"
-                                    placeholder={objeto.institucion}
 								/>
 								<ErrorMessage name="institucion" component={() => (<div className="error">{errors.institucion}</div>)} />
 							</div>
@@ -129,7 +128,6 @@ const EditarPrograma = ({objeto}) => {
 									type="text" 
 									id="tipo" 
 									name="tipo"
-                                    placeholder={objeto.tipo}
 								/>
 							</div>
 
@@ -165,6 +163,7 @@ const EditarPrograma = ({objeto}) => {
 					)}
 				</Formik>
 			</div>
+		}
 		</>
 	);
 }

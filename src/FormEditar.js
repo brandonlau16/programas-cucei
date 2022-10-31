@@ -15,11 +15,24 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudiante';
 		fetch (url, requestInit);
 
-        // codigo para obtener los nuevos datos de la bd
-		cambiarFormularioEnviado(true);
+        const requestInitNuevo = {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(valores)
+		}
+
+		const urlNuevo = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudianteDatos';
+        const response = await fetch (urlNuevo, requestInitNuevo);
+        const responseJSON = await response.json();
+
+        localStorage.setItem('Alumno', JSON.stringify(responseJSON));
+
+        console.log(responseJSON);
+
+        cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
-        //localStorage.setItem('Alumno', JSON.stringify(estudiantes));  se necesita actualizar la info del estudiante
         cambiarEstado(false);
+        window.location.reload();
 	}
 
 	return (
@@ -29,28 +42,20 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                 <Formik
                     initialValues={{
                         codigoOri: alumno[0].codigo,
-                        codigo: alumno[0].codigo,
                         nombre: alumno[0].nombre,
                         primer_apellido: alumno[0].primer_apellido,
                         segundo_apellido: alumno[0].segundo_apellido,
-                        contrasena: '',
+                        contrasena: alumno[0].contrasena,
                         clave_carrera: alumno[0].clave_carrera,
                         ciclo_escolar: alumno[0].ciclo_escolar,
                         num_semestre: alumno[0].num_semestre,
                         estatus: alumno[0].estatus,
                         correo_estudiante: alumno[0].correo_estudiante,
                         descripcion: alumno[0].descripcion,
-                        foto: ''
+                        foto: ""
                     }}
                     validate={(valores) => {
                         let errores = {};
-
-                        // Validacion codigo
-                        if(!valores.codigo){
-                            errores.codigo = 'Por favor ingresa un codigo de estudiante'
-                        } else if(/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.codigo)){
-                            errores.codigo = 'El codigo solo puede contener numeros'
-                        }
 
                         // Validacion nombre
                         if(!valores.nombre){
@@ -110,18 +115,8 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                         handleSubmit(valores);
                     }}
                 >
-                    {( {errors} ) => (
-                        <Form className="formulario-editar">
-                            <div>
-                                <label htmlFor="codigo">Codigo</label>
-                                <Field
-                                    type="text" 
-                                    id="codigo" 
-                                    name="codigo"
-                                />
-                                <ErrorMessage name="codigo" component={() => (<div className="error">{errors.codigo}</div>)} />
-                            </div>
-
+                    {( {errors}, setFieldValue ) => (
+                        <Form className="formulario-editar" encType="multipart/form-data">
                             <div>
                                 <label htmlFor="nombre">Nombre</label>
                                 <Field
@@ -221,9 +216,12 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                             <div>
                                 <label htmlFor="foto">Foto de perfil</label>
                                 <Field 
-                                    type="file" 
-                                    id="foto" 
-                                    name="foto"
+                                    type="file"
+                                    accept="image/*"
+                                    name='foto'
+                                    onChange={(e) =>
+                                        setFieldValue('foto', e.currentTarget.files[0])
+                                    }
                                 />
                             </div>
 
