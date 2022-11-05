@@ -2,17 +2,17 @@
     box-shadow: 8px 12px 15px 8px rgba(0, 0, 0, 0.3) !important;
     transition: all 0.5s linear;
 }
-  
+
 .card-body {
     padding: 2rem 0 !important;
 }
-  
+
 .card-text {
     padding: 0.3rem 1rem;
     font-size: 1rem;
     height: 100px;
 }
-  
+
 .overflow {
     overflow: hidden;
     height: 200px;
@@ -22,11 +22,12 @@
     transition: all 0.4s ease-in-out;
     height: 200px;
 }
-  
+
 .card-img-top:hover {
     transform: scale(1.8);
 }
 
-#fila{
+#fila {
     position: static;
+    height: 214px;
 }

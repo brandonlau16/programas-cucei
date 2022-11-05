@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	background: #E8E8E8;
 	font-family: 'Open Sans', sans-serif;
+}
+
+.containerProgramas {
+	display: flex;
+	flex-direction: column;
+	margin: 20px 45px;
 }
 
 #box {
@@ -20,7 +32,7 @@ body {
 	margin-top: 50px;
 }
 
-.formulario-programa > div {
+.formulario-programa>div {
 	margin-bottom: 5%;
 }
 
@@ -36,7 +48,7 @@ body {
 .formulario-programa textarea {
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
-    height: 40px;
+	height: 40px;
 	border-radius: 5px;
 	border: 2px solid #e2e2e2;
 	font-size: 13px;
@@ -68,7 +80,7 @@ body {
 	color: #fff;
 	font-size: 14px;
 	transition: .3s ease all;
-    height: 40px;
+	height: 40px;
 }
 
 .formulario-programa button[type="submit"]:hover {
@@ -105,7 +117,7 @@ body {
 	.formulario-programa label {
 		font-size: 12px;
 	}
-	
+
 	.formulario-programa input,
 	.formulario-programa textarea {
 		height: 30px;

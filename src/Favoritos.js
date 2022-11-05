@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ChatBot from "./Chatbot";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import ProgramasFav from "./ProgramasFav";
@@ -18,14 +19,14 @@ const Favoritos = () => {
 
   return (
     <>
-      <header className="p-3 mb-3 border-bottom">
+      <header className="mb-3 border-bottom">
         <NavBar alumno={alumno}></NavBar>
       </header>
 
       <main className="container">
         <ProgramasFav></ProgramasFav>
       </main>
-
+      <ChatBot></ChatBot>
       <Footer></Footer>
     </>
   );

@@ -7,7 +7,7 @@ const NavBarAdmin = ({alumno}) => {
   }
 
   return (
-    <div className="container">
+    <div className="containerN">
       <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
         <a href="/HomeAdmin" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
           Programas CUCEI

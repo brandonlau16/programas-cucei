@@ -21,6 +21,8 @@ const Admin = () => {
 	return (
 		<>
 			<div class="overlay-admin">
+				<div className='blackBackground'>
+
 				<div class="contenedor-texto-admin">
 					<div class="texto-encima-admin"> 
 						<h4 class="titulo-admin">BIENVENIDO A PROGRAMAS CUCEI! <br/><br/></h4>
@@ -144,6 +146,7 @@ const Admin = () => {
 						</Form>
 					)}
 				</Formik>
+				</div>
 			</div>
 		</>
 	);

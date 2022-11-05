@@ -5,14 +5,14 @@ const cards = [
     {
         id: 1,
         title: 'Crear Programa',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
+        image: 'https://blog.bayton.com/hs-fs/hubfs/Hombres%20y%20mujeres%20de%20negocios%20discutiendo%20sobre%20la%20mejor%20toma%20de%20decisiones%20para%20su%20empresa.jpg?width=1206&name=Hombres%20y%20mujeres%20de%20negocios%20discutiendo%20sobre%20la%20mejor%20toma%20de%20decisiones%20para%20su%20empresa.jpg',
         info: 'Accede para crear un nuevo programa en la plataforma',
         link: '/CrearPrograma'
     },
     {
         id: 2,
         title: 'Administrar Programas',
-        image: 'https://www.todofondos.net/wp-content/uploads/4k-fondo-de-pantalla-minimalista-2-scaled.jpg',
+        image: 'https://utopia-consultores.com/wp-content/uploads/teclado.jpg',
         info: 'Edita o elimina la informacion de algun programa existente',
         link: '/AdministrarProgramas'
     }

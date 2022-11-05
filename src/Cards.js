@@ -5,21 +5,21 @@ const cards = [
     {
         id: 1,
         title: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
+        image: 'https://media.istockphoto.com/photos/portrait-of-female-student-holding-books-in-classroom-young-woman-at-picture-id1007726450?k=20&m=1007726450&s=612x612&w=0&h=kM5wutnwg0cvmGxG_PiHUQGgaCgJ8gEC-uPE8xBPWEw=',
         info: 'Programa para recursos',
         link: '/Programas/Beca/1'
     },
     {
         id: 2,
         title: 'Internships',
-        image: 'https://www.todofondos.net/wp-content/uploads/4k-fondo-de-pantalla-minimalista-2-scaled.jpg',
+        image: 'https://elsensato.com/wp-content/uploads/2021/05/businesswomen-talking-in-office-464675697-574c59673df78ccee1052935-scaled.jpg',
         info: 'Programa para tener una pasantia en alguna empresa',
         link: '/Programas/Internship/1'
     },
     {
         id: 3,
         title: 'Trabajos',
-        image: 'https://www.wallpapertip.com/wmimgs/20-200549_minimalist-desktop-wallpaper-hd.jpg',
+        image: 'https://www.iacc.cl/wp-content/uploads/2017/11/image003-1024x681.jpg',
         info: 'Programa para capacitacion laborar',
         link: '/Programas/Trabajo/1'
     }

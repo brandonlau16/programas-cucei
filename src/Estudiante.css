@@ -7,39 +7,45 @@
 }
 
 .overlay-est {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-content: center;
-    justify-content: right;
-    background: url("https://www.xtrafondos.com/wallpapers/montanas-en-bosque-minimalista-flat-3306.jpg");
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-content: center;
+	justify-content: right;
+	background: url("https://img.freepik.com/fotos-premium/equipo-estudiantes-que-completan-tarea_23-2147666610.jpg");
 	overflow: auto;
-	background-size: contain;
+	background-size: cover;
 }
 
-.texto-encima-est{
-    position: absolute;
-    color: rgba(0, 0, 0, 0.60);
+.blackBackgroundE {
+	width: 100vw;
+	height: 1600px;
+	background-color: rgba(0, 0, 0, 0.60);
 }
 
-.titulo-est{
-    font-weight: bold;
+.texto-encima-est {
+	position: absolute;
+	color: rgb(255, 255, 255);
+}
+
+.titulo-est {
+	font-weight: bold;
 }
 
 .contenedor-texto-est {
-    position: absolute;
-    top: 21%;
-    left: 7%;
-    width: 32%;
-    background-color: white;
+	position: absolute;
+	top: 21%;
+	left: 7%;
+	width: 32%;
+	background-color: white;
 }
 
 .titulo {
-    text-align: center;
-    font-weight: bold;
+	text-align: center;
+	font-weight: bold;
 }
 
 body {
@@ -60,12 +66,12 @@ body {
 	border-radius: 2px;
 	padding: 20px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    position: absolute;
-    top: 21%;
-    right: 7.3%;
+	position: absolute;
+	top: 21%;
+	right: 7.3%;
 }
 
-.formulario-est > div {
+.formulario-est>div {
 	margin-bottom: 5%;
 }
 
@@ -81,7 +87,7 @@ body {
 .formulario-est textarea {
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
-    height: 40px;
+	height: 40px;
 	border-radius: 5px;
 	border: 2px solid #e2e2e2;
 	font-size: 13px;
@@ -103,7 +109,7 @@ body {
 
 .formulario-est button[type="submit"] {
 	display: block;
-	background: #0085FF;
+	background: #AEB8FE;
 	font-weight: 600;
 	font-family: 'Open Sans', sans-serif;
 	border: none;
@@ -113,7 +119,7 @@ body {
 	color: #fff;
 	font-size: 14px;
 	transition: .3s ease all;
-    height: 40px;
+	height: 40px;
 }
 
 .formulario-est button[type="submit"]:hover {
@@ -150,7 +156,7 @@ body {
 	.formulario-est label {
 		font-size: 12px;
 	}
-	
+
 	.formulario-est input,
 	.formulario-est textarea {
 		height: 30px;
@@ -164,5 +170,9 @@ body {
 
 	.titulo-login {
 		font-size: 14px;
+	}
+
+	.blackBackgroundE {
+		height: 1320px;
 	}
 }

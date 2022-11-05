@@ -4,3 +4,46 @@
 	box-sizing: border-box;
 }
 
+.flexContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.imgContainer {
+	min-width: 250px;
+	height: 250px;
+	margin: 10px 0;
+}
+
+.alumnoInfo {
+	min-width: 300px;
+	min-height: 200px;
+	margin: 10px;
+	background-color: #AEB8FE;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.alumnoEditInfo {
+	width: 90%;
+	margin-bottom: 25px;
+	background-color: rgb(214, 214, 214);
+}
+
+.alumnoEditarButton {
+	width: 50%;
+}
+
+.imgInfoRow {
+	display: flex;
+	gap: 25%;
+	margin-bottom: 10px;
+}
+
+@media screen and (max-width: 770px) {
+	.imgInfoRow {
+		flex-direction: column;
+		align-items: center;
+	}
+}

@@ -1,0 +1,9 @@
+* {
+    padding: 0px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.containerN {
+    background-color: rgb(241, 241, 241);
+}
