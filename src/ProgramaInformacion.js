@@ -81,14 +81,14 @@ const ProgramaInformacion = () => {
               { !programas ? 'Cargando...' : 
               programas.map(programa => {
                   cargar();
-                  return <div key={programa.id}><CardDatos nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
+                  return <div key={programa.id}><CardDatos alumno={alumno} idPrograma={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
               })
               }
             </div>
           </div>
 
           <div class="col-md-4">
-            <h3 class="mb-3">Otros similares</h3>
+            <h3 class="mb-3 text-center">Otros similares</h3>
             <div class="row">
               { !programaEvitado ? 'Cargando...' :
                   programaEvitado.map(programa => {

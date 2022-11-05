@@ -4,12 +4,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import CardPrograma from "./CardPrograma";
 import ProgramaPrincipal from "./ProgramaPrincipal";
 
+var listaMostrar = [];
+
 const Programas = () => {
   const params = useParams();
   const navigate = useNavigate();
   var anterior, siguiente, numBloques;
   const [programas, setProgramas] = useState();
   let bloques = [];
+  var lista = [];
 
   if(params.num > 10){
     anterior = params.num - 10;
@@ -17,7 +20,7 @@ const Programas = () => {
     anterior = 1;
   }
 
-  if((parseInt(params.num) + 10) <= (numBloques * 10)){
+  if((parseInt(params.num) + 10) <= (parseInt(numBloques) + 10)){
     siguiente = parseInt(params.num) + 10;
   }else{
     siguiente = params.num;
@@ -31,7 +34,19 @@ const Programas = () => {
     const response = await fetch (url);
     const responseJSON = await response.json();
     setProgramas(responseJSON);
-    console.log(responseJSON);
+    lista = responseJSON;
+    listaMostrar = [];
+    var contador = (parseInt(params.num) - 1);
+    var i = (parseInt(params.num) + 8);
+
+    for(contador; contador <= i ; contador++){
+      if(contador < (lista.length)){
+        listaMostrar[contador] = lista[contador];
+      }
+    }
+    console.log(lista);
+    console.log(listaMostrar);
+    console.log(i);
   }
 
   const handleSubmit = (event) => {
@@ -56,7 +71,7 @@ const Programas = () => {
         n = n + 10;
       }
       
-      bloques.push(<li class="page-item"><a class="page-link" href={urlS}>Siguiente</a></li>);
+      bloques.push(<li class="page-item"><a href={urlS} class="page-link">Siguiente</a></li>);
     }
 
     return <nav aria-label="Page navigation example"><ul class="pagination justify-content-center">{bloques}</ul></nav>
@@ -88,8 +103,8 @@ const Programas = () => {
       </div>
 
       <div class="row mb-2">
-        { !programas ? 'Cargando...' :
-          programas.map(programa => {
+        { !listaMostrar ? 'Cargando...' :
+          listaMostrar.map(programa => {
             numBloques = Math.floor(programas.length/10) + 1;
             return <div class="col-md-6" key={programa.id}><CardPrograma id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
           })

@@ -1,34 +1,18 @@
 const CardProgramaAdmin = ({id, nombre, descripcion, telefono, correo, institucion, imagen, tipo, clave}) => {
   const url = "/ProgramaAdmin/" + tipo + "/" + id;
 
-  function handleSubmit (valores) {
+  const handleSubmit = async () => {
+    const cadena = {
+      id: id
+    }
     const requestInit = {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(valores)
+      body: JSON.stringify(cadena)
     }
 
     const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas';
-    fetch (url, requestInit); //Aun no funciona
-
-    /*const requestInitNuevo = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(valores)
-    }
-
-    const urlNuevo = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudianteDatos';
-        const response = await fetch (urlNuevo, requestInitNuevo);
-        const responseJSON = await response.json();
-
-        localStorage.setItem('Alumno', JSON.stringify(responseJSON));
-
-        console.log(responseJSON);
-
-        cambiarFormularioEnviado(true);
-        setTimeout(() => cambiarFormularioEnviado(false), 5000);
-        cambiarEstado(false);
-        window.location.reload();*/
+    await fetch (url, requestInit);
   }
 
   return (
@@ -44,8 +28,8 @@ const CardProgramaAdmin = ({id, nombre, descripcion, telefono, correo, instituci
         <h3 class="mb-0">{nombre}</h3>
         <div class="mb-1 text-muted">{institucion}</div>
         <p class="card-text mb-auto">{descripcion}</p>
-        <a href={url} class="btn btn-outline-secondary mb-3" margin-right="20px">Editar Programa</a>
-        <a onClick={handleSubmit(id)} class="btn btn-outline-secondary">Eliminar Programa</a>
+        <a href={url} class="btn btn-outline-secondary mb-3" margin-right="20px">Editar programa</a>
+        <button onClick={() => handleSubmit()} class="btn btn-outline-secondary">Eliminar programa</button>
       </div>
       <div class="col-auto d-none d-lg-block">
         <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"

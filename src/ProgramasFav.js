@@ -1,48 +1,82 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import CardPrograma from "./CardPrograma";
+import CardFavoritos from "./CardFavoritos";
 
 const ProgramasFav = () => {
   const params = useParams();
   const navigate = useNavigate();
-  var anterior, siguiente;
+  var anterior, siguiente, numBloques;
+  const [programas, setProgramas] = useState();
+  let bloques = [];
+  //let paginaProgramas = [];
 
-  if(params.num > 1){
+  if(params.num > 10){
     anterior = params.num - 10;
   }else{
     anterior = 1;
   }
 
-  if(params.num < 40){
+  if((parseInt(params.num) + 10) <= (parseInt(numBloques) + 10)){
     siguiente = parseInt(params.num) + 10;
   }else{
-    siguiente = 41;
+    siguiente = params.num;
   }
 
-  const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/' + params.tipo;
-  const urlA = '/Programas/Intercambio/' + anterior;
-  const urlS = '/Programas/Intercambio/' + siguiente;
-  const [programas, setProgramas] = useState();
-  
+  const urlA = '/Programas/' + params.tipo + '/' + anterior;
+  const urlS = '/Programas/' + params.tipo + '/' + siguiente;
+
+  const getData = () => {
+    return JSON.parse(localStorage.getItem('Alumno'));
+  }
+
+  const [alumno, setAlumno] = useState(getData);
+
   const fetchApi = async () => {
-    const response = await fetch (url);
+    const cadena = {
+      codigo_estudiante: alumno[0].codigo
+    }
+    const requestInit = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(cadena)
+    }
+
+    const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/obtenerFavoritos';
+    const response = await fetch (url, requestInit);
     const responseJSON = await response.json();
     setProgramas(responseJSON);
-    console.log(responseJSON);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const busqueda = event.target.nombre.value;
     const resultado = programas.filter(programa => programa.nombre === busqueda);
-    const urlR = '/Programa/' + resultado[0].tipo + '/' + resultado[0].id;
-    navigate(urlR);
-    console.log(resultado);
+    setProgramas(resultado);
+  }
+
+  function Navegation() {
+    var urlBloque = '';
+    var n = 1;
+
+    if(bloques.length === 0){
+      bloques.push(<li class="page-item"><a href={urlA} class="page-link">Anterior</a></li>);
+    
+      for(var i=1; i <= numBloques ; i++){
+        urlBloque = '/Programas/' + params.tipo + '/' + n;
+        bloques.push(<li class="page-item"><a class="page-link" href={urlBloque}>{i}</a></li>);
+        n = n + 10;
+      }
+      
+      bloques.push(<li class="page-item"><a href={urlS} class="page-link">Siguiente</a></li>);
+    }
+
+    return <nav aria-label="Page navigation example"><ul class="pagination justify-content-center">{bloques}</ul></nav>
   }
 
   useEffect(() => {
     fetchApi();
+    setAlumno(getData());
   }, [])
 
   return (
@@ -65,26 +99,13 @@ const ProgramasFav = () => {
       <div class="row mb-2">
         { !programas ? 'Cargando...' :
           programas.map(programa => {
-            return <div class="col-md-6" key={programa.id}><CardPrograma id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
+            numBloques = Math.floor(programas.length/10) + 1;
+            return <div class="col-md-6" key={programa.id}><CardFavoritos alumno={alumno} id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
           })
         }
       </div>
 
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a href={urlA} class="page-link">Anterior</a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="/Programas/Intercambio/1">1</a></li>
-          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/11">2</a></li>
-          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/21">3</a></li>
-          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/31">4</a></li>
-          <li class="page-item"><a class="page-link" href="/Programas/Intercambio/41">5</a></li>
-          <li class="page-item">
-            <a class="page-link" href={urlS}>Siguiente</a>
-          </li>
-        </ul>
-      </nav>
+      <Navegation/>
     </>
   );
 }

@@ -10,7 +10,6 @@ const Favoritos = () => {
   }
 
   const [alumno, setAlumno] = useState(getData);
-  const [estadoForm, cambiarEstadoForm] = useState(false);
 
   useEffect(() => {
       setAlumno(getData());

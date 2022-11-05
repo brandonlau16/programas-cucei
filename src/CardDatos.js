@@ -1,4 +1,20 @@
-const CardDatos = ({nombre, descripcion, telefono, correo, institucion, imagen, tipo, clave}) => {
+const CardDatos = ({alumno, idPrograma, nombre, descripcion, telefono, correo, institucion, imagen, tipo, clave}) => {
+    const handleSubmit = async () => {
+      const cadena = {
+        codigo_estudiante: alumno[0].codigo,
+        id_programa: idPrograma
+      }
+      const requestInit = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(cadena)
+      }
+
+      const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/guardarFavoritos';
+      await fetch (url, requestInit);
+    }
+
+
     return (
       <>
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -28,7 +44,7 @@ const CardDatos = ({nombre, descripcion, telefono, correo, institucion, imagen, 
             <div class="mb-1 text-muted">Telefono: {telefono}</div>
             <div class="mb-1 text-muted mb-3">Correo electronico: {correo}</div>
             
-            <a href="#" class="btn btn-outline-secondary mb-3" margin-right="20px">Añadir a favoritos</a>
+            <button onClick={() => handleSubmit()} class="btn btn-outline-secondary mb-3" margin-right="20px">Añadir a favoritos</button>
             <a href="#" class="btn btn-outline-secondary">Postularme</a>
           </div>
         </div>

@@ -13,7 +13,7 @@ const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 		}
 
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/administrador';
-		fetch (url, requestInit);
+		await fetch (url, requestInit);
 
 		const requestInitNuevo = {
 			method: 'POST',

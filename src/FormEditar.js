@@ -6,26 +6,52 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
 	const handleSubmit = async (valores) => {
+        let data = new FormData();
+        data.append('codigoOri', valores.codigoOri);
+        data.append('nombre', valores.nombre);
+        data.append('primer_apellido', valores.primer_apellido);
+        data.append('segundo_apellido', valores.segundo_apellido);
+        data.append('contrasena', valores.contrasena);
+        data.append('clave_carrera', valores.clave_carrera);
+        data.append('ciclo_escolar', valores.ciclo_escolar);
+        data.append('num_semestre', valores.num_semestre);
+        data.append('estatus', valores.estatus);
+        data.append('correo_estudiante', valores.correo_estudiante);
+        data.append('descrip´cion', valores.descripcion);
+        if(valores.foto !== null){
+            data.append('foto', valores.foto);
+        }
+
 		const requestInit = {
 			method: 'PATCH',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(valores)
+			body: data
 		}
 
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudiante';
-		fetch (url, requestInit);
+		await fetch (url, requestInit);
+
+        alumno[0].codigo = valores.codigoOri;
+        alumno[0].nombre = valores.nombre;
+        alumno[0].primer_apellido = valores.primer_apellido;
+        alumno[0].segundo_apellido = valores.segundo_apellido;
+        alumno[0].contrasena = valores.contrasena; 
+        alumno[0].clave_carrera = valores.clave_carrera;
+        alumno[0].ciclo_escolar = valores.ciclo_escolar
+        alumno[0].num_semestre = valores.num_semestre;
+        alumno[0].estatus = valores.estatus;
+        alumno[0].correo_estudiante = valores.correo_estudiante;
+        alumno[0].descripcion = valores.descripcion;
+
+        localStorage.setItem('Alumno', JSON.stringify(alumno));
 
         const requestInitNuevo = {
 			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(valores)
+			body: data
 		}
 
 		const urlNuevo = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudianteDatos';
         const response = await fetch (urlNuevo, requestInitNuevo);
         const responseJSON = await response.json();
-
-        localStorage.setItem('Alumno', JSON.stringify(responseJSON));
 
         console.log(responseJSON);
 
@@ -52,7 +78,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                         estatus: alumno[0].estatus,
                         correo_estudiante: alumno[0].correo_estudiante,
                         descripcion: alumno[0].descripcion,
-                        foto: ""
+                        foto: null
                     }}
                     validate={(valores) => {
                         let errores = {};
@@ -115,8 +141,8 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                         handleSubmit(valores);
                     }}
                 >
-                    {( {errors}, setFieldValue ) => (
-                        <Form className="formulario-editar" encType="multipart/form-data">
+                    {(errors) => (
+                        <Form className="formulario-editar">
                             <div>
                                 <label htmlFor="nombre">Nombre</label>
                                 <Field
@@ -215,13 +241,11 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
 
                             <div>
                                 <label htmlFor="foto">Foto de perfil</label>
-                                <Field 
+                                <input 
                                     type="file"
                                     accept="image/*"
-                                    name='foto'
-                                    onChange={(e) =>
-                                        setFieldValue('foto', e.currentTarget.files[0])
-                                    }
+                                    name="foto"
+                                    onChange={(event) => errors.setFieldValue("foto", event.target.files[0])}
                                 />
                             </div>
 

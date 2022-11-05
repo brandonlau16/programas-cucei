@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Barra from "./Barra";
 import './HomeAdmin.css';
 import ChatBot from "./Chatbot";
 import CardsAdmin from "./CardsAdmin";
@@ -11,7 +10,6 @@ function HomeAdmin() {
     return JSON.parse(localStorage.getItem('Alumno'));
   }
   
-  const [estadoBarra, cambiarEstadoBarra] = useState(false);
   const [alumno, setAlumno] = useState(getData);
 
   useEffect(() => {
@@ -19,7 +17,7 @@ function HomeAdmin() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App-admin">
       <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         rel="stylesheet"
@@ -37,15 +35,15 @@ function HomeAdmin() {
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
       ></script>
 
-      <div className="App-header">
+      <div className="App-header-admin">
         <NavBarAdmin alumno={alumno}></NavBarAdmin>
-        <div class="texto-encima"> 
-          <h4 class="titulo-home">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
+        <div class="texto-encima-admin"> 
+          <h4 class="titulo-home-admin">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
           <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>
         </div>
       </div>
 
-      <div className="cards-header">
+      <div className="cards-header-admin">
         <CardsAdmin/>
       </div>
 
