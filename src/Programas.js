@@ -88,7 +88,7 @@ const Programas = () => {
       }
 
       <div class="row mb-3">
-        <form class="container" onSubmit={handleSubmit}>
+        <form class="containerBusqueda" onSubmit={handleSubmit}>
           <div class="row gx-2">
             <div class="col-11">
               <input class="form-control" type="text" name="nombre" placeholder="Buscar..." aria-label="default input example" />

@@ -57,7 +57,7 @@ const PaginaEditarProgramaAdmin = () => {
 
   return (
     <>
-      <header className="p-3 mb-3 border-bottom">
+      <header className="mb-3 border-bottom">
         <NavBarAdmin alumno={alumno}></NavBarAdmin>
       </header>
 

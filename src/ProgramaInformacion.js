@@ -5,6 +5,7 @@ import CardDatos from "./CardDatos";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import Similares from "./Similares";
+import ChatBot from "./Chatbot";
 
 const ProgramaInformacion = () => {
   const params = useParams();
@@ -55,7 +56,7 @@ const ProgramaInformacion = () => {
 
   return (
     <>
-      <header className="p-3 mb-3 border-bottom">
+      <header className="mb-3 border-bottom">
         <NavBar alumno={alumno}></NavBar>
       </header>
 
@@ -99,7 +100,7 @@ const ProgramaInformacion = () => {
           </div>
         </div>
       </main>
-
+      <ChatBot></ChatBot>
       <Footer></Footer>
     </>
   );

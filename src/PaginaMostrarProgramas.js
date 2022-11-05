@@ -17,11 +17,9 @@ const PaginaMostrarProgramas = () => {
 
   return (
     <>
-      <header className="p-3 mb-3 border-bottom">
         <NavBar alumno={alumno}></NavBar>
-      </header>
 
-      <main className="container">
+      <main className="containerProgramas">
         <Programas></Programas>
       </main>
 

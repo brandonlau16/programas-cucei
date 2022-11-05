@@ -1,5 +1,5 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-
+import "./NavBar.css";
 const NavBar = ({alumno}) => {
 
   function handleClickHome (){
@@ -7,16 +7,16 @@ const NavBar = ({alumno}) => {
   }
 
   return (
-    <div className="container">
-      <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
+    <div className="containerN">
+      <div className="d-flex flex-wrap align-items-center gap-3 justify-content-center navTexts">
         <a href="/Home" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
           Programas CUCEI
         </a>
 
         <ul className="nav col-12 col-lg-auto me-lg-3 mb-2 justify-content-center mb-md-0">
-          <li><a href="/Programas/Beca/1" className="nav-link px-2 link-dark">Becas</a></li>
-          <li><a href="/Programas/Internship/1" className="nav-link px-2 link-dark">Internships</a></li>
-          <li><a href="/Programas/Trabajo/1" className="nav-link px-2 link-dark">Trabajos</a></li>
+          <li><a href="/Programas/Beca/1" className="nav-link px-2 link-dark m-3">Becas</a></li>
+          <li><a href="/Programas/Internship/1" className="nav-link px-2 link-dark m-3">Internships</a></li>
+          <li><a href="/Programas/Trabajo/1" className="nav-link px-2 link-dark m-3">Trabajos</a></li>
         </ul>
 
         <Dropdown className="text-end">
