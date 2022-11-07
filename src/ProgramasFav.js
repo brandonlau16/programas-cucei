@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CardFavoritos from "./CardFavoritos";
+
+var listaMostrar = [];
 
 const ProgramasFav = () => {
   const params = useParams();
-  const navigate = useNavigate();
   var anterior, siguiente, numBloques;
   const [programas, setProgramas] = useState();
   let bloques = [];
-  //let paginaProgramas = [];
+  var lista = [];
 
   if(params.num > 10){
     anterior = params.num - 10;
@@ -23,8 +24,8 @@ const ProgramasFav = () => {
     siguiente = params.num;
   }
 
-  const urlA = '/Programas/' + params.tipo + '/' + anterior;
-  const urlS = '/Programas/' + params.tipo + '/' + siguiente;
+  const urlA = '/Favoritos/' + anterior;
+  const urlS = '/Favoritos/' + siguiente;
 
   const getData = () => {
     return JSON.parse(localStorage.getItem('Alumno'));
@@ -46,6 +47,16 @@ const ProgramasFav = () => {
     const response = await fetch (url, requestInit);
     const responseJSON = await response.json();
     setProgramas(responseJSON);
+    lista = responseJSON;
+    listaMostrar = [];
+    var contador = (parseInt(params.num) - 1);
+    var i = (parseInt(params.num) + 8);
+
+    for(contador; contador <= i ; contador++){
+      if(contador < (lista.length)){
+        listaMostrar[contador] = lista[contador];
+      }
+    }
   }
 
   const handleSubmit = (event) => {
@@ -63,7 +74,7 @@ const ProgramasFav = () => {
       bloques.push(<li class="page-item"><a href={urlA} class="page-link">Anterior</a></li>);
     
       for(var i=1; i <= numBloques ; i++){
-        urlBloque = '/Programas/' + params.tipo + '/' + n;
+        urlBloque = '/Favoritos/' + n;
         bloques.push(<li class="page-item"><a class="page-link" href={urlBloque}>{i}</a></li>);
         n = n + 10;
       }

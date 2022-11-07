@@ -5,18 +5,34 @@ import './EditarPrograma.css';
 const EditarPrograma = ({datos, estado, cambiarEstado}) => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
-	const handleSubmit = (valores) => {
+	const handleSubmit = async (valores) => {
+		let data = new FormData();
+        data.append('id', valores.id);
+        data.append('nombre', valores.nombre);
+        data.append('telefono', valores.telefono);
+        data.append('correo', valores.correo);
+        data.append('institucion', valores.institucion);
+        data.append('tipo', valores.tipo);
+		for (var i = 0; i < valores.carreras.length; i++) {
+			data.append('carreras[]', valores.carreras[i]);
+		}
+        data.append('descripcion', valores.descripcion);
+        if(valores.foto !== null){
+            data.append('foto', valores.foto);
+        }
+
 		const requestInit = {
 			method: 'PATCH',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(valores)
+			body: data
 		}
 
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas';
-		fetch (url, requestInit);
+		await fetch (url, requestInit);
+
 		cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
 		cambiarEstado(false);
+		window.location.reload();
 	}
 
 	return (
@@ -31,9 +47,9 @@ const EditarPrograma = ({datos, estado, cambiarEstado}) => {
 						telefono: datos[0].telefono,
 						correo: datos[0].correo,
 						institucion: datos[0].institucion,
-						foto: '',
 						tipo: datos[0].tipo,
-						carreras: datos[0].carreras
+						carreras: datos[0].carreras,
+						foto: null
 					}}
 					validate={(valores) => {
 						let errores = {};
@@ -75,7 +91,7 @@ const EditarPrograma = ({datos, estado, cambiarEstado}) => {
 						handleSubmit(valores);
 					}}
 				>
-					{( {errors} ) => (
+					{(errors) => (
 						<Form className="formulario-programa-editar">
 							<div>
 								<label htmlFor="nombre">Nombre del programa</label>
@@ -148,14 +164,14 @@ const EditarPrograma = ({datos, estado, cambiarEstado}) => {
 							</div>
 
 							<div>
-								<label htmlFor="foto">Imagen del programa</label>
-								<Field
-									type="file" 
-									id="foto" 
-									name="foto"
-								/>
-								<ErrorMessage name="foto" component={() => (<div className="error">{errors.foto}</div>)} />
-							</div>
+                                <label htmlFor="foto">Foto de perfil</label>
+                                <input 
+                                    type="file"
+                                    accept="image/*"
+                                    name="foto"
+                                    onChange={(event) => errors.setFieldValue("foto", event.target.files[0])}
+                                />
+                            </div>
 
 							<button type="submit">Enviar</button>
 							{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}

@@ -11,15 +11,28 @@ const Programa = () => {
         return JSON.parse(localStorage.getItem('Alumno'));
     }
 
-	const handleSubmit = (valores) => {
+	const handleSubmit = async (valores) => {
+		let data = new FormData();
+        data.append('nombre', valores.nombre);
+        data.append('telefono', valores.telefono);
+        data.append('correo', valores.correo);
+        data.append('institucion', valores.institucion);
+        data.append('tipo', valores.tipo);
+        for (var i = 0; i < valores.carreras.length; i++) {
+			data.append('carreras[]', valores.carreras[i]);
+		}
+        data.append('descripcion', valores.descripcion);
+        if(valores.foto !== null){
+            data.append('foto', valores.foto);
+        }
+
 		const requestInit = {
 			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(valores)
+			body: data
 		}
 
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas';
-		fetch (url, requestInit);
+		await fetch (url, requestInit);
 		cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
 	}
@@ -32,22 +45,22 @@ const Programa = () => {
 
 	return (
 		<>
-			<header className="mb-3 border-bottom">
+			<header className="mb-2 border-bottom">
 				<NavBarAdmin alumno={alumno}></NavBarAdmin>
 			</header>
 
-			<div class="container">
+			<div class="container d-flex flex-wrap align-items-center justify-content-center">
 				<Formik
 					initialValues={{
+
 						nombre: '',
 						descripcion: '',
 						telefono: '',
 						correo: '',
 						institucion: '',
-						foto: '',
+						foto: null,
 						tipo: '',
 						carreras: []
-
 					}}
 					validate={(valores) => {
 						let errores = {};
@@ -89,7 +102,7 @@ const Programa = () => {
 						handleSubmit(valores);
 					}}
 				>
-					{( {errors} ) => (
+					{(errors) => (
 						<Form className="formulario-programa">
 							<div>
 								<label htmlFor="nombre">Nombre del programa</label>
@@ -167,14 +180,14 @@ const Programa = () => {
 							</div>
 
 							<div>
-								<label htmlFor="foto">Imagen del programa</label>
-								<Field
-									type="file" 
-									id="foto" 
-									name="foto"
-								/>
-								<ErrorMessage name="foto" component={() => (<div className="error">{errors.foto}</div>)} />
-							</div>
+                                <label htmlFor="foto">Foto de perfil</label>
+                                <input 
+                                    type="file"
+                                    accept="image/*"
+                                    name="foto"
+                                    onChange={(event) => errors.setFieldValue("foto", event.target.files[0])}
+                                />
+                            </div>
 
 							<button type="submit">Enviar</button>
 							{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}

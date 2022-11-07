@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 
-.overlay-admin {
+.overlay-admin-reg {
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
@@ -20,22 +20,22 @@
 	background-size: cover;
 }
 
-.blackBackground {
+.blackBackground-admin-reg {
 	width: 100vw;
-	height: 100vh;
+	height: 1600px;
 	background-color: rgba(0, 0, 0, 0.60);
 }
 
-.texto-encima-admin {
+.texto-encima-admin-reg {
 	position: absolute;
 	color: rgb(255, 255, 255);
 }
 
-.titulo-admin {
+.titulo-admin-reg {
 	font-weight: bold;
 }
 
-.contenedor-texto-admin {
+.contenedor-texto-admin-reg {
 	position: absolute;
 	top: 21%;
 	left: 7%;
@@ -43,7 +43,7 @@
 	background-color: white;
 }
 
-.titulo {
+.titulo-admin-reg {
 	text-align: center;
 	font-weight: bold;
 }
@@ -60,7 +60,7 @@ body {
 	justify-content: center;
 }
 
-.formulario-admin {
+.formulario-admin-reg {
 	width: 36.5%;
 	background: rgba(255, 255, 255, 0.90);
 	border-radius: 2px;
@@ -71,11 +71,11 @@ body {
 	right: 7.3%;
 }
 
-.formulario-admin>div {
+.formulario-admin-reg>div {
 	margin-bottom: 5%;
 }
 
-.formulario-admin label {
+.formulario-admin-reg label {
 	display: block;
 	font-weight: 600;
 	font-size: 14px;
@@ -83,8 +83,8 @@ body {
 	color: rgba(0, 0, 0, 0.90);
 }
 
-.formulario-admin input,
-.formulario-admin textarea {
+.formulario-admin-reg input,
+.formulario-admin-reg textarea {
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
 	height: 40px;
@@ -96,18 +96,18 @@ body {
 	color: #1f1f1f;
 }
 
-.formulario-admin input:focus {
+.formulario-admin-reg input:focus {
 	outline: none;
 	border: 2px solid #0085FF;
 }
 
-.formulario-admin .error {
+.formulario-admin-reg .error {
 	color: #e92b2d;
 	font-weight: 600;
 	font-size: 12px;
 }
 
-.formulario-admin button[type="submit"] {
+.formulario-admin-reg button[type="submit"] {
 	display: block;
 	background: #AEB8FE;
 	font-weight: 600;
@@ -122,23 +122,23 @@ body {
 	height: 40px;
 }
 
-.formulario-admin button[type="submit"]:hover {
+.formulario-admin-reg button[type="submit"]:hover {
 	background: #0051ff;
 }
 
-.formulario-admin .exito {
+.formulario-admin-reg .exito {
 	text-align: center;
 	font-size: 14px;
 	padding-top: 20px;
 	color: #02a802;
 }
 
-.formulario-admin input[type="radio"] {
+.formulario-admin-reg input[type="radio"] {
 	width: auto;
 }
 
 @media screen and (max-width: 500px) {
-	.contenedor-texto-admin {
+	.contenedor-texto-admin-reg {
 		top: 5%;
 		left: 5%;
 		right: 5%;
@@ -146,29 +146,33 @@ body {
 		font-size: 12px;
 	}
 
-	.formulario-admin {
+	.formulario-admin-reg {
 		top: 30%;
 		left: 5%;
 		right: 5%;
 		width: 90%;
 	}
 
-	.formulario-admin label {
+	.formulario-admin-reg label {
 		font-size: 12px;
 	}
 
-	.formulario-admin input,
-	.formulario-admin textarea {
+	.formulario-admin-reg input,
+	.formulario-admin-reg textarea {
 		height: 30px;
 		font-size: 12px;
 	}
 
-	.formulario-admin button[type="submit"] {
+	.formulario-admin-reg button[type="submit"] {
 		font-size: 12px;
 		height: 30px;
 	}
 
-	.titulo-login {
+	.titulo-login-reg {
 		font-size: 14px;
+	}
+
+	.blackBackground-admin-reg {
+		height: 1320px;
 	}
 }

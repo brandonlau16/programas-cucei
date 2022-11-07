@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Barra from "./Barra";
 import Cards from './Cards';
 import './Home.css';
 import ChatBot from "./Chatbot";
@@ -11,7 +10,6 @@ function Home() {
     return JSON.parse(localStorage.getItem('Alumno'));
   }
   
-  const [estadoBarra, cambiarEstadoBarra] = useState(false);
   const [alumno, setAlumno] = useState(getData);
 
   useEffect(() => {

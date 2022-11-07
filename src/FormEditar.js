@@ -17,9 +17,12 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
         data.append('num_semestre', valores.num_semestre);
         data.append('estatus', valores.estatus);
         data.append('correo_estudiante', valores.correo_estudiante);
-        data.append('descrip´cion', valores.descripcion);
+        data.append('descripcion', valores.descripcion);
         if(valores.foto !== null){
             data.append('foto', valores.foto);
+        }
+        if(valores.cv !== null){
+            data.append('cv', valores.cv);
         }
 
 		const requestInit = {
@@ -46,7 +49,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
 
         const requestInitNuevo = {
 			method: 'POST',
-			body: data
+			body: data.codigo
 		}
 
 		const urlNuevo = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudianteDatos';
@@ -78,7 +81,8 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                         estatus: alumno[0].estatus,
                         correo_estudiante: alumno[0].correo_estudiante,
                         descripcion: alumno[0].descripcion,
-                        foto: null
+                        foto: null,
+                        cv: null
                     }}
                     validate={(valores) => {
                         let errores = {};
@@ -246,6 +250,16 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                                     accept="image/*"
                                     name="foto"
                                     onChange={(event) => errors.setFieldValue("foto", event.target.files[0])}
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="cv">CV actual</label>
+                                <input 
+                                    type="file"
+                                    accept=".pdf"
+                                    name="cv"
+                                    onChange={(event) => errors.setFieldValue("cv", event.target.files[0])}
                                 />
                             </div>
 

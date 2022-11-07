@@ -7,3 +7,10 @@
 .containerN {
     background-color: rgb(241, 241, 241);
 }
+
+#nav-est {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}

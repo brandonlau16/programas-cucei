@@ -41,9 +41,19 @@
 	margin-bottom: 10px;
 }
 
+.cv {
+	margin-bottom: 25px;
+	margin-top: 10px;
+}
+
 @media screen and (max-width: 770px) {
 	.imgInfoRow {
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.cv {
+		width: 400px;
+		height: 400px;
 	}
 }

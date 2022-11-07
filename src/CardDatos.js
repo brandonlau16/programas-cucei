@@ -14,6 +14,21 @@ const CardDatos = ({alumno, idPrograma, nombre, descripcion, telefono, correo, i
       await fetch (url, requestInit);
     }
 
+    const handleSubmitRegistro = async () => {
+      const cadena = {
+        codigo_estudiante: alumno[0].codigo,
+        id_programa: idPrograma
+      }
+      const requestInit = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(cadena)
+      }
+
+      const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/registro';
+      await fetch (url, requestInit);
+    }
+
 
     return (
       <>
@@ -23,12 +38,7 @@ const CardDatos = ({alumno, idPrograma, nombre, descripcion, telefono, correo, i
             <div class="mb-1 text-muted mb-3">{institucion}</div>
 
             <div class="col-auto d-lg-block mb-3">
-              <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img"
-                aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                  dy=".3em">Thumbnail</text>
-              </svg>
+              <img src={imagen} width="100%" height="100%"/>
             </div>
 
             <strong class="d-inline-block mb-2 text-primary">{tipo} | { !clave ? '' : 
@@ -45,7 +55,7 @@ const CardDatos = ({alumno, idPrograma, nombre, descripcion, telefono, correo, i
             <div class="mb-1 text-muted mb-3">Correo electronico: {correo}</div>
             
             <button onClick={() => handleSubmit()} class="btn btn-outline-secondary mb-3" margin-right="20px">Añadir a favoritos</button>
-            <a href="#" class="btn btn-outline-secondary">Postularme</a>
+            <button onClick={() => handleSubmitRegistro()} class="btn btn-outline-secondary">Postularme</button>
           </div>
         </div>
       </>

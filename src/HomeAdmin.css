@@ -1,46 +1,47 @@
-.App {
+.App-admin {
   text-align: center;
   background: rgb(154, 154, 154);
   background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(185, 185, 185) 100%);
 }
 
-.App-header {
+.App-header-admin {
   height: 400px;
   width: 100%;
   background: url("https://img.freepik.com/foto-gratis/grupo-personas-trabajando-plan-negocios-oficina_1303-15788.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 250px;
+  margin-bottom: 180px;
 }
 
-.texto-encima {
+.texto-encima-admin {
   color: rgba(0, 0, 0, 0.80);
   position: relative;
   top: 430px;
+  background-color: #AEB8FE;
 }
 
-.titulo-home {
+.titulo-home-admin {
   font-weight: bold;
 }
 
-.navbar-nav li:hover .barra {
+.navbar-nav-admin li:hover .barra {
   display: block;
   width: 25vh;
   height: 100vh;
   background-color: rgba(0, 0, 0, 1);
 }
 
-.blue {
+.blue-admin {
   background: rgba(0, 0, 0, 0.4);
 }
 
-.cards-header {
+.cards-header-admin {
   height: 100%;
   width: 100%;
   padding: 100px 0px 100px 0px;
 }
 
-.overlay-barra {
+.overlay-barra-admin {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -51,19 +52,19 @@
   justify-content: right;
 }
 
-.barra {
+.barra-admin {
   width: 17vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
 }
 
-.barra ul {
+.barra-admin ul {
   padding: 0;
   list-style: none;
 }
 
-.barra li {
+.barra-admin li {
   width: 100%;
   height: 40px;
   text-align: center;
@@ -71,40 +72,40 @@
   padding-right: 8%;
 }
 
-.barra li:first-of-type {
+.barra-admin li:first-of-type {
   width: 100%;
   height: 100%;
   padding-top: 0%;
 }
 
-.barra li a {
+.barra-admin li a {
   font-size: 12px;
   color: white;
 }
 
-#perfil {
+#perfil-admin {
   width: 170px;
   height: 170px;
   border-radius: 100%;
   margin: 3px;
 }
 
-.barra:hover li:hover {
+.barra-admin:hover li:hover {
   background-color: rgba(201, 46, 175, 0.562);
 }
 
-.barra:hover li:hover:first-of-type {
+.barra-admin:hover li:hover:first-of-type {
   background-color: transparent;
 }
 
-#circulo {
+#circulo-admin {
   width: 35px;
   height: 35px;
   border-radius: 100%;
   cursor: pointer;
 }
 
-.App-footer {
+.App-footer-admin {
   height: 200px;
   line-height: 50px;
   background: black;
@@ -118,21 +119,21 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .texto-encima {
+  .texto-encima-admin {
     font-size: 14px;
     position: relative;
     top: 100px;
   }
 
-  .App-footer {
+  .App-footer-admin {
     font-size: 12px;
   }
 
-  .barra {
+  .barra-admin {
     width: 30vw;
   }
 
-  #perfil {
+  #perfil-admin {
     width: 100%;
     height: 100%;
   }

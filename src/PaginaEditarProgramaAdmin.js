@@ -19,7 +19,6 @@ const PaginaEditarProgramaAdmin = () => {
   const urlTodos = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/' + params.tipo;
   const [programas, setProgramas] = useState();
   const [programasTodos, setProgramasTodos] = useState();
-  let programaEvitado = '';
   
   const fetchApi = async () => {
     const response = await fetch (url);
@@ -44,9 +43,8 @@ const PaginaEditarProgramaAdmin = () => {
     console.log(resultado);
   }
 
-  const cargar = async () => {
-    programaEvitado = programasTodos.filter(programaExcluido => programaExcluido.id !== programas[0].id);
-    console.log("Este es:", programas[0].nombre);
+  const cargar = () => {
+    console.log(programas);
   }
 
   useEffect(() => {
@@ -82,6 +80,7 @@ const PaginaEditarProgramaAdmin = () => {
             <div class="row mb-3">
               { !programas ? 'Cargando...' : 
               programas.map(programa => {
+                  cargar();
                   return <div key={programa.id}><CardDatosAdmin nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/><a onClick={() => cambiarEstadoForm(!estadoForm)} class="btn btn-outline-secondary w-100">Editar datos</a></div>
               })
               }

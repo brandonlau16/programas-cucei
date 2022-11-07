@@ -7,6 +7,8 @@ import NavBar from "./NavBar";
 import Similares from "./Similares";
 import ChatBot from "./Chatbot";
 
+var listaOtros = [];
+
 const ProgramaInformacion = () => {
   const params = useParams();
   const getData = () => {
@@ -19,7 +21,10 @@ const ProgramaInformacion = () => {
   const urlTodos = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/' + params.tipo;
   const [programas, setProgramas] = useState();
   const [programasTodos, setProgramasTodos] = useState();
-  let programaEvitado = '';
+  var programaEvitado = [];
+  var cantidad = 0;
+  var random = 0;
+  var random2 = 0;
   
   const fetchApi = async () => {
     const response = await fetch (url);
@@ -45,7 +50,25 @@ const ProgramaInformacion = () => {
   }
 
   const cargar = async () => {
-    programaEvitado = programasTodos.filter(programaExcluido => programaExcluido.id !== programas[0].id);
+    listaOtros = [];
+
+    if(programasTodos.length > 3){
+      programaEvitado = programasTodos.filter(programaExcluido => programaExcluido.id !== programas[0].id);
+      cantidad = programaEvitado.length;
+      random = Math.floor(Math.random()*(cantidad-0+1)+0);
+      random2 = Math.floor(Math.random()*(cantidad-0+1)+0);
+      listaOtros[0] = programaEvitado[random];
+
+      if(random === random2){
+        random2 = Math.floor(Math.random()*(cantidad-0+1)+0);
+      }else{
+        listaOtros[1] = programaEvitado[random2];
+      }
+    }else if(programasTodos.length > 2){
+      programaEvitado = programasTodos.filter(programaExcluido => programaExcluido.id !== programas[0].id);
+      listaOtros[0] = programaEvitado[0];
+      listaOtros[1] = programaEvitado[1];
+    }
   }
 
   useEffect(() => {
@@ -91,8 +114,8 @@ const ProgramaInformacion = () => {
           <div class="col-md-4">
             <h3 class="mb-3 text-center">Otros similares</h3>
             <div class="row">
-              { !programaEvitado ? 'Cargando...' :
-                  programaEvitado.map(programa => {
+              { !listaOtros ? 'Cargando...' :
+                  listaOtros.map(programa => {
                   return <div key={programa.id}><Similares id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
               })
               }

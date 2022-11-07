@@ -3,173 +3,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CardProgramaAdmin from "./CardProgramaAdmin";
 
-const cards = [
-    {
-        id: 1,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 2,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 3,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 4,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 5,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 6,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 7,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 8,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 9,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 10,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 11,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 12,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 13,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 14,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    },
-    {
-        id: 15,
-        nombre: 'Becas',
-        image: 'https://fondosmil.com/fondo/13706.jpg',
-        descripcion: 'Programa para recursos',
-        telefono: '33746576',
-        correo: 'correo@gmai.com',
-        institucion: 'Intel',
-        tipo: 'Trabajo',
-        clave: ['INCO', 'INNI']
-    }
-]
+var listaMostrar = [];
 
 const AdminProgramas = () => {
   const params = useParams();
@@ -177,6 +11,7 @@ const AdminProgramas = () => {
   var anterior, siguiente, numBloques;
   const [programas, setProgramas] = useState();
   let bloques = [];
+  var lista = [];
 
   if(params.num > 10){
     anterior = params.num - 10;
@@ -190,15 +25,27 @@ const AdminProgramas = () => {
     siguiente = params.num;
   }
 
-  const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/' + params.tipo;
-  const urlA = '/Programas/' + params.tipo + '/' + anterior;
-  const urlS = '/Programas/' + params.tipo + '/' + siguiente;
+  const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/programas/';
+  const urlA = '/AdministrarProgramas/' + anterior;
+  const urlS = '/AdministrarProgramas/' + siguiente;
   
   const fetchApi = async () => {
     const response = await fetch (url);
     const responseJSON = await response.json();
-    setProgramas(cards);
-    console.log(responseJSON);
+    setProgramas(responseJSON);
+    lista = responseJSON;
+    listaMostrar = [];
+    var contador = (parseInt(params.num) - 1);
+    var i = (parseInt(params.num) + 8);
+
+    for(contador; contador <= i ; contador++){
+      if(contador < (lista.length)){
+        listaMostrar[contador] = lista[contador];
+      }
+    }
+    console.log(lista);
+    console.log(listaMostrar);
+    console.log(i);
   }
 
   const handleSubmit = (event) => {
@@ -218,7 +65,7 @@ const AdminProgramas = () => {
       bloques.push(<li class="page-item"><a href={urlA} class="page-link">Anterior</a></li>);
     
       for(var i=1; i <= numBloques ; i++){
-        urlBloque = '/Programas/' + params.tipo + '/' + n;
+        urlBloque = '/AdministrarProgramas/' + n;
         bloques.push(<li class="page-item"><a class="page-link" href={urlBloque}>{i}</a></li>);
         n = n + 10;
       }
@@ -251,8 +98,8 @@ const AdminProgramas = () => {
       </div>
 
       <div class="row mb-2">
-        { !programas ? 'Cargando...' :
-          programas.map(programa => {
+        { !listaMostrar ? 'Cargando...' :
+          listaMostrar.map(programa => {
             numBloques = Math.floor(programas.length/10) + 1;
             return <div class="col-md-6" key={programa.id}><CardProgramaAdmin id={programa.id} nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/></div>
           })

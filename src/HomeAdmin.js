@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './HomeAdmin.css';
-import ChatBot from "./Chatbot";
 import CardsAdmin from "./CardsAdmin";
 import FooterAdmin from "./FooterAdmin";
 import NavBarAdmin from "./NavBarAdmin";
@@ -48,7 +47,6 @@ function HomeAdmin() {
       </div>
 
       <FooterAdmin></FooterAdmin>
-      <ChatBot></ChatBot>
     </div>
   );
 }

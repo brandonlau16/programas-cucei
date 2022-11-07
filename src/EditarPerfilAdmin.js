@@ -22,8 +22,6 @@ const EditarPerfilAdmin = () => {
         <header className="mb-3">
             <NavBarAdmin alumno={alumno}></NavBarAdmin>
         </header>
-
-        <ChatBot></ChatBot>
         
         <main className="container">
             <div class="flexContainer"> 

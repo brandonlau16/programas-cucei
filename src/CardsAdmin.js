@@ -14,7 +14,7 @@ const cards = [
         title: 'Administrar Programas',
         image: 'https://utopia-consultores.com/wp-content/uploads/teclado.jpg',
         info: 'Edita o elimina la informacion de algun programa existente',
-        link: '/AdministrarProgramas'
+        link: '/AdministrarProgramas/1'
     }
 ]
 

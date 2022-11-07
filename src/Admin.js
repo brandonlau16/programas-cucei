@@ -20,12 +20,11 @@ const Admin = () => {
 
 	return (
 		<>
-			<div class="overlay-admin">
-				<div className='blackBackground'>
-
-				<div class="contenedor-texto-admin">
-					<div class="texto-encima-admin"> 
-						<h4 class="titulo-admin">BIENVENIDO A PROGRAMAS CUCEI! <br/><br/></h4>
+		<div class="overlay-admin-reg">
+			<div className='blackBackground-admin-reg'>
+				<div class="contenedor-texto-admin-reg">
+					<div class="texto-encima-admin-reg"> 
+						<h4 class="titulo-admin-reg">BIENVENIDO A PROGRAMAS CUCEI!<br/><br/></h4>
 						<p>La plataforma que te proporciona los programas disponibles para tu carrera, crea tu perfil, navega y registrate a los programas que se ajusten a ti.</p>
 					</div>
 				</div>
@@ -86,7 +85,7 @@ const Admin = () => {
 					}}
 				>
 					{( {errors} ) => (
-						<Form className="formulario-admin">
+						<Form className="formulario-admin-reg">
 							<div>
 								<label htmlFor="nombre">Nombre</label>
 								<Field
@@ -146,8 +145,8 @@ const Admin = () => {
 						</Form>
 					)}
 				</Formik>
-				</div>
 			</div>
+		</div>
 		</>
 	);
 }

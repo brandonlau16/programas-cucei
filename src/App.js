@@ -26,9 +26,9 @@ function App() {
                 <Route path="/Administrador" element={<Admin/>}/>
                 <Route path="/Perfil" element={<EditarPerfil/>}/>
                 <Route path="/PerfilAdmin" element={<EditarPerfilAdmin/>}/>
-                <Route path="/Favoritos" element={<Favoritos/>}/>
+                <Route path="/Favoritos/:num" element={<Favoritos/>}/>
                 <Route path="/CrearPrograma" element={<Programa/>}/>
-                <Route path="/AdministrarProgramas" element={<PaginaAdminProgramas/>}/>
+                <Route path="/AdministrarProgramas/:num" element={<PaginaAdminProgramas/>}/>
                 <Route path="/Programas/:tipo/:num" element={<PaginaMostrarProgramas/>}/>
                 <Route path="/Programa/:tipo/:id" element={<ProgramaInformacion/>}/>
                 <Route path="/ProgramaAdmin/:tipo/:id" element={<PaginaEditarProgramaAdmin/>}/>

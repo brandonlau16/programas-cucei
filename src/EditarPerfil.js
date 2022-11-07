@@ -44,6 +44,9 @@ const EditarPerfil = () => {
                         <p>Estatus: {alumno[0].estatus}</p>
                     </div>
                 </div>
+                <div>
+                    <embed class="cv" src={alumno[0].cv} type="application/pdf" width="800px" height="400px" />
+                </div>
                 <div class="alumnoEditInfo">
                     <FormEditar alumno={alumno} estado={estadoForm} cambiarEstado={cambiarEstadoForm}/>
                 </div>
