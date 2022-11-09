@@ -5,7 +5,7 @@ import { AiOutlineClose, AiOutlineSend } from "react-icons/ai";
 import React from "react";
 //investigar hacer uso de useConext
 
-function ChatBot() {
+function ChatBot({alumno}) {
   const claseChat = React.createRef();
   const finalChat = React.createRef();
   const [chatAbierto, setChatAbierto] = useState(false);
@@ -163,7 +163,7 @@ function ChatBot() {
                           className="mensaje-imagen"
                           src={
                             data.duenioMensaje === "mensaje-persona"
-                              ? "https://github.com/mdo.png"
+                              ? alumno[0].foto
                               : "https://www.ecured.cu/images/f/f5/Bot.jpg"
                           }
                           alt={

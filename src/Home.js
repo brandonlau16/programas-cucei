@@ -50,7 +50,7 @@ function Home() {
       </div>
 
       <Footer></Footer>
-      <ChatBot></ChatBot>
+      <ChatBot alumno={alumno}></ChatBot>
     </div>
   );
 }

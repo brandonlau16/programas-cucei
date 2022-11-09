@@ -128,7 +128,7 @@ const ProgramaInformacion = () => {
             </div>
           </div>
         </main>
-        <ChatBot></ChatBot>
+        <ChatBot alumno={alumno}></ChatBot>
         <Footer></Footer>
       </div>
     </>

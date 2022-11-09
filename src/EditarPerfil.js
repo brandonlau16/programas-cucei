@@ -25,7 +25,7 @@ const EditarPerfil = () => {
                     <NavBar alumno={alumno}></NavBar>
                 </header>
 
-                <ChatBot></ChatBot>
+                <ChatBot alumno={alumno}></ChatBot>
                 
                 <main className="container">
                     <div class="flexContainer">

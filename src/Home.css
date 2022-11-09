@@ -8,9 +8,9 @@
 }
 
 .blackBackground-Home {
-	width: 100vw;
-	height: 400px;
-	background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .App-header {
@@ -132,7 +132,7 @@
 
 @media screen and (max-width: 1000px) {
   .texto-encima {
-    margin-top: 250px;
+    margin-top: -200px;
     font-size: 14px;
   }
 

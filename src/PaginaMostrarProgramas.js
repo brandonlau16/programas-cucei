@@ -26,7 +26,7 @@ const PaginaMostrarProgramas = () => {
         </main>
 
         <Footer></Footer>
-        <ChatBot></ChatBot>
+        <ChatBot alumno={alumno}></ChatBot>
       </div>
     </>
   );

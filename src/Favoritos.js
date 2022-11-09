@@ -27,7 +27,7 @@ const Favoritos = () => {
         <main className="container">
           <ProgramasFav></ProgramasFav>
         </main>
-        <ChatBot></ChatBot>
+        <ChatBot alumno={alumno}></ChatBot>
         <Footer></Footer>
       </div>
     </>
