@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Admin from "./Admin";
+import Ayuda from "./Ayuda";
+import AyudaAdmin from "./AyudaAdmin";
 import EditarPerfil from "./EditarPerfil";
 import EditarPerfilAdmin from "./EditarPerfilAdmin";
 import Estudiante from "./Estudiante";
@@ -21,7 +23,9 @@ function App() {
                 <Route path="/" element={<Login/>}/>
                 <Route path="/LoginAdmin" element={<LoginAdmin/>}/>
                 <Route path="/Home" element={<Home/>}/>
+                <Route path="/Ayuda" element={<Ayuda/>}/>
                 <Route path="/HomeAdmin" element={<HomeAdmin/>}/>
+                <Route path="/AyudaAdmin" element={<AyudaAdmin/>}/>
                 <Route path="/Registro" element={<Estudiante/>}/>
                 <Route path="/Administrador" element={<Admin/>}/>
                 <Route path="/Perfil" element={<EditarPerfil/>}/>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import ChatBot from "./Chatbot";
 import AdminProgramas from "./AdminProgramas";
 import NavBarAdmin from "./NavBarAdmin";
 import FooterAdmin from "./FooterAdmin";
+import './HomeAdmin.css';
 
 const PaginaAdminProgramas = () => {
   const getData = () => {
@@ -17,15 +17,17 @@ const PaginaAdminProgramas = () => {
 
   return (
     <>
-      <header className="mb-3 border-bottom">
-        <NavBarAdmin alumno={alumno}></NavBarAdmin>
-      </header>
+      <div className="App-Fondo-Admin-Otros">
+        <header className="mb-3 border-bottom">
+          <NavBarAdmin alumno={alumno}></NavBarAdmin>
+        </header>
 
-      <main className="container">
-        <AdminProgramas></AdminProgramas>
-      </main>
+        <main className="container">
+          <AdminProgramas></AdminProgramas>
+        </main>
 
-      <FooterAdmin></FooterAdmin>
+        <FooterAdmin></FooterAdmin>
+      </div>
     </>
   );
 }

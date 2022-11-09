@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginAdmin = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+	const [formularioNoEnviado, cambiarFormularioNoEnviado] = useState(false);
     const navigate = useNavigate();
 
 	function handleClickAdmin (){
@@ -29,12 +30,14 @@ const LoginAdmin = () => {
 		const responseJSON = await response.json();
 		console.log(responseJSON);
 
-		if (responseJSON){
-			handleClickHome(responseJSON);
+		if (responseJSON.length > 0){
+			setTimeout(() => handleClickHome(responseJSON), 1000);
+			cambiarFormularioEnviado(true);
+			setTimeout(() => cambiarFormularioEnviado(false), 5000);
+		}else{
+			cambiarFormularioNoEnviado(true);
+			setTimeout(() => cambiarFormularioNoEnviado(false), 5000);
 		}
-
-		cambiarFormularioEnviado(true);
-		setTimeout(() => cambiarFormularioEnviado(false), 5000);
 	}
 
 	return (
@@ -106,6 +109,7 @@ const LoginAdmin = () => {
 							<button type="submit">Iniciar sesión</button><br/>
 							<label htmlFor="registrar">¿No tienes cuenta? <a onClick={handleClickAdmin} class="registro">Regístrate</a></label>
 							{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+							{formularioNoEnviado && <p className="NoExito">Datos incorrectos</p>}
 						</Form>
 					)}
 				</Formik>

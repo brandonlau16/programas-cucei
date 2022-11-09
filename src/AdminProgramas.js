@@ -43,9 +43,6 @@ const AdminProgramas = () => {
         listaMostrar[contador] = lista[contador];
       }
     }
-    console.log(lista);
-    console.log(listaMostrar);
-    console.log(i);
   }
 
   const handleSubmit = (event) => {

@@ -24,14 +24,12 @@ const PaginaEditarProgramaAdmin = () => {
     const response = await fetch (url);
     const responseJSON = await response.json();
     setProgramas(responseJSON);
-    console.log(responseJSON);
   }
 
   const fetchApiTodos = async () => {
     const responseTodos = await fetch (urlTodos);
     const responseJSONTodos = await responseTodos.json();
     setProgramasTodos(responseJSONTodos);
-    console.log(responseJSONTodos);
   }
 
   const handleSubmit = (event) => {
@@ -41,10 +39,6 @@ const PaginaEditarProgramaAdmin = () => {
     const urlR = '/Programa/' + resultado[0].tipo + '/' + resultado[0].id;
     window.location.replace(urlR);
     console.log(resultado);
-  }
-
-  const cargar = () => {
-    console.log(programas);
   }
 
   useEffect(() => {
@@ -80,7 +74,6 @@ const PaginaEditarProgramaAdmin = () => {
             <div class="row mb-3">
               { !programas ? 'Cargando...' : 
               programas.map(programa => {
-                  cargar();
                   return <div key={programa.id}><CardDatosAdmin nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/><a onClick={() => cambiarEstadoForm(!estadoForm)} class="btn btn-outline-secondary w-100">Editar datos</a></div>
               })
               }

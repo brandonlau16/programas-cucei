@@ -16,7 +16,7 @@ function HomeAdmin() {
   }, []);
 
   return (
-    <div className="App-admin">
+    <div className="App-Fondo-Admin">
       <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         rel="stylesheet"
@@ -35,10 +35,12 @@ function HomeAdmin() {
       ></script>
 
       <div className="App-header-admin">
-        <NavBarAdmin alumno={alumno}></NavBarAdmin>
-        <div class="texto-encima-admin"> 
-          <h4 class="titulo-home-admin">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
-          <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>
+        <div className='blackBackground-Home'>
+          <NavBarAdmin alumno={alumno}></NavBarAdmin>
+          <div class="texto-encima-admin"> 
+            <h4 class="titulo-home-admin">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
+            <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>
+          </div>
         </div>
       </div>
 

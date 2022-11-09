@@ -12,6 +12,7 @@
   width: 70px;
   height: 50px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .chat-abierto {
@@ -20,7 +21,7 @@
 }
 
 .parte-superior-chat {
-  background-color: #758BFD;
+  background-color: #0051ff;
   width: 270px;
   height: 50px;
   border-radius: 2px;
@@ -92,11 +93,11 @@
 
 .icono-x :hover {
   color: #999;
-
+  cursor: pointer;
 }
 
 .historial {
-  background-color: #eee;
+  background-color: #ccc;
   width: 270px;
   height: 260px;
   overflow-y: scroll;
@@ -104,37 +105,41 @@
 }
 
 .espacio-escritura {
-  background-color: #eee;
-  height: 30px;
+  background-color: #ccc;
+  height: 40px;
   width: 270px;
   display: flex;
   align-items: center;
 }
 
 .texto-chat {
-  width: 238px;
+  width: 230px;
   height: 30px;
   border-radius: 5px;
+  margin-left: 3px;
+  margin-bottom: 3px;
 }
 
 .chatbot-enviar {
   width: 25px;
   height: 25px;
-  border-radius: 50%;
+  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #758BFD;
-  border: 2px solid #000;
+  border: 1px solid #000;
   color: #fff;
   margin-left: 3px;
+  cursor: pointer;
+  margin-bottom: 4px;
 }
 
 .chatbot-enviar :hover {
   width: 25px;
   height: 25px;
-  border-radius: 50%;
-  background-color: #2c4efc;
+  border-radius: 100%;
+  background-color: #0051ff;
   border: 1px solid #000;
   color: #fff;
 }

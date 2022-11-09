@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 import Programas from "./Programas";
 import ChatBot from "./Chatbot";
+import './Home.css';
 
 const PaginaMostrarProgramas = () => {
   const getData = () => {
@@ -17,14 +18,16 @@ const PaginaMostrarProgramas = () => {
 
   return (
     <>
+      <div className="App-Fondo-Otros">
         <NavBar alumno={alumno}></NavBar>
 
-      <main className="containerProgramas">
-        <Programas></Programas>
-      </main>
+        <main className="containerProgramas">
+          <Programas></Programas>
+        </main>
 
-      <Footer></Footer>
-      <ChatBot></ChatBot>
+        <Footer></Footer>
+        <ChatBot></ChatBot>
+      </div>
     </>
   );
 }

@@ -5,7 +5,7 @@ const ProgramaPrincipal = ({id, nombre, descripcion, telefono, correo, instituci
         <div class="col-md-6 px-0">
           <h1 class="display-4 fst-italic">{nombre}</h1>
           <p class="lead my-3">{descripcion}</p>
-          <p class="lead mb-0"><a href={url} class="text-white fw-bold">Ver detalles...</a></p>
+          <p class="lead mb-0"><a href={url} class="btn btn-outline-secondary">Ver detalles...</a></p>
         </div>
       </div>
     );

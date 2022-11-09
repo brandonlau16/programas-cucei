@@ -8,9 +8,9 @@ function Card({title, image, info, link}) {
             <img src={image} alt="" class="card-img-top"/>
         </div>
         <div class="card-body">
-            <h4 class="card-title">{title}</h4>
-            <p class="card-text text-secondary">{info}</p>
-            <a href={link} class="btn btn-outline-secondary">Ver programas</a>
+            <h4 class="card-title mb-4">{title}</h4>
+            <p class="card-text text-primary">{info}</p>
+            <a href={link} class="btn btn-outline-primary">Ver programas</a>
         </div>
     </div>
   );

@@ -27,7 +27,7 @@ const NavBar = ({alumno}) => {
           <Dropdown.Menu className="text-small">
             <Dropdown.Item href="/Perfil">Mi perfil</Dropdown.Item>
             <Dropdown.Item href="/Favoritos/1">Mis Favoritos</Dropdown.Item>
-            <Dropdown.Item href="/">Ayuda</Dropdown.Item>
+            <Dropdown.Item href="/Ayuda">Ayuda</Dropdown.Item>
             <Dropdown.Item href="/" onClick={() => handleClickHome()}>Cerrar sesión</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

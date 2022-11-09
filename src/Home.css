@@ -1,7 +1,16 @@
-.App {
+.App-Fondo {
   text-align: center;
-  background: rgb(154, 154, 154);
-  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(185, 185, 185) 100%);
+  background-color: rgba(201, 201, 201, 0.253);
+}
+
+.App-Fondo-Otros {
+  background-color: rgba(201, 201, 201, 0.253);
+}
+
+.blackBackground-Home {
+	width: 100vw;
+	height: 400px;
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
 .App-header {
@@ -16,7 +25,10 @@
 .texto-encima {
   color: rgba(0, 0, 0, 0.80);
   position: relative;
-  top: 430px;
+  top: 400px;
+  height: 180px;
+  padding: 30px;
+  text-align: center;
   background-color: #AEB8FE;
 }
 

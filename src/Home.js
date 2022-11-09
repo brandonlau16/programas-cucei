@@ -17,7 +17,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App-Fondo">
       <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         rel="stylesheet"
@@ -36,10 +36,12 @@ function Home() {
       ></script>
 
       <div className="App-header">
-        <NavBar alumno={alumno}></NavBar>
-        <div class="texto-encima"> 
-          <h4 class="titulo-home">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
-          <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>
+        <div className='blackBackground-Home'>
+          <NavBar alumno={alumno}></NavBar>
+          <div class="texto-encima"> 
+            <h4 class="titulo-home">BIENVENIDO A PROGRAMAS CUCEI <br/><br/></h4>
+            <p>Puedes acceder y registrarte a los programas<br/> que mas te gusten y sean accesibles para ti.</p>
+          </div>
         </div>
       </div>
 

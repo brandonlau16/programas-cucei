@@ -60,8 +60,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
 
         cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
-        cambiarEstado(false);
-        window.location.reload();
+        setTimeout(() => window.location.reload(), 1300);
 	}
 
 	return (
@@ -146,7 +145,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                     }}
                 >
                     {(errors) => (
-                        <Form className="formulario-editar">
+                        <Form className="formulario-editar bg-white">
                             <div>
                                 <label htmlFor="nombre">Nombre</label>
                                 <Field
@@ -264,7 +263,7 @@ function FormEditar ({alumno, estado, cambiarEstado}) {
                             </div>
 
                             <button type="submit">Enviar</button>
-                            {formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+                            {formularioEnviado && <p className="exito">Cambios realizados con exito!</p>}
                         </Form>
                     )}
                 </Formik>

@@ -3,6 +3,7 @@ import ChatBot from "./Chatbot";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import ProgramasFav from "./ProgramasFav";
+import "./Home.css";
 
 const Favoritos = () => {
 
@@ -18,15 +19,17 @@ const Favoritos = () => {
 
   return (
     <>
-      <header className="mb-3 border-bottom">
-        <NavBar alumno={alumno}></NavBar>
-      </header>
+      <div className="App-Fondo-Otros">
+        <header className="mb-3 border-bottom">
+          <NavBar alumno={alumno}></NavBar>
+        </header>
 
-      <main className="container">
-        <ProgramasFav></ProgramasFav>
-      </main>
-      <ChatBot></ChatBot>
-      <Footer></Footer>
+        <main className="container">
+          <ProgramasFav></ProgramasFav>
+        </main>
+        <ChatBot></ChatBot>
+        <Footer></Footer>
+      </div>
     </>
   );
 }

@@ -44,9 +44,6 @@ const Programas = () => {
         listaMostrar[contador] = lista[contador];
       }
     }
-    console.log(lista);
-    console.log(listaMostrar);
-    console.log(i);
   }
 
   const handleSubmit = (event) => {
@@ -55,7 +52,6 @@ const Programas = () => {
     const resultado = programas.filter(programa => programa.nombre === busqueda);
     const urlR = '/Programa/' + resultado[0].tipo + '/' + resultado[0].id;
     navigate(urlR);
-    console.log(resultado);
   }
 
   function Navegation() {

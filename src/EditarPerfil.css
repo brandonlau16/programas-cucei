@@ -19,8 +19,9 @@
 .alumnoInfo {
 	min-width: 300px;
 	min-height: 200px;
+	height: 95%;
 	margin: 10px;
-	background-color: #AEB8FE;
+	background-color: rgb(235, 235, 235);
 	padding: 5px;
 	border-radius: 5px;
 }
@@ -39,6 +40,20 @@
 	display: flex;
 	gap: 25%;
 	margin-bottom: 10px;
+	width: 100vw;
+	height: 480px;
+	padding-left: 20%;
+	padding-right: 20%;
+	background: url("https://www.nationalgeographic.com.es/medio/2021/07/16/un-estudiante-toma-clases-on-line_4631f716_1280x853.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.blackBackground-Editar {
+	width: 100vw;
+	height: 480px;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 30px;
 }
 
 .cv {

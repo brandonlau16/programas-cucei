@@ -31,8 +31,7 @@ const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 
         cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
-        cambiarEstado(false);
-        window.location.reload();
+        setTimeout(() => window.location.reload(), 1000);
 	}
 
 	return (
@@ -96,7 +95,7 @@ const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 					}}
 				>
 					{( {errors} ) => (
-						<Form className="formulario-editar-admin">
+						<Form className="formulario-editar-admin bg-white">
 							<div>
 								<label htmlFor="nombre">Nombre</label>
 								<Field
@@ -152,7 +151,7 @@ const FormEditarAdmin = ({alumno, estado, cambiarEstado}) => {
 							</div>
 
 							<button type="submit">Enviar</button>
-							{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+							{formularioEnviado && <p className="exito">Cambios realizados con exito!</p>}
 						</Form>
 					)}
 				</Formik>
