@@ -36,7 +36,7 @@ const PaginaEditarProgramaAdmin = () => {
     event.preventDefault();
     const busqueda = event.target.nombre.value;
     const resultado = programasTodos.filter(programa => programa.nombre === busqueda);
-    const urlR = '/Programa/' + resultado[0].tipo + '/' + resultado[0].id;
+    const urlR = '/ProgramaAdmin/' + resultado[0].tipo + '/' + resultado[0].id;
     window.location.replace(urlR);
     console.log(resultado);
   }
@@ -74,7 +74,7 @@ const PaginaEditarProgramaAdmin = () => {
             <div class="row mb-3">
               { !programas ? 'Cargando...' : 
               programas.map(programa => {
-                  return <div key={programa.id}><CardDatosAdmin nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/><a onClick={() => cambiarEstadoForm(!estadoForm)} class="btn btn-outline-secondary w-100">Editar datos</a></div>
+                  return <div key={programa.id}><CardDatosAdmin nombre={programa.nombre} descripcion={programa.descripcion} telefono={programa.telefono} correo={programa.correo} institucion={programa.institucion} imagen={programa.imagen} tipo={programa.tipo} clave={programa.carreras}/><a onClick={() => cambiarEstadoForm(!estadoForm)} class="btn btn-outline-primary w-100">Editar datos</a></div>
               })
               }
             </div>

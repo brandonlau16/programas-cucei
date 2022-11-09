@@ -3,7 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './EditarPrograma.css';
 
 const EditarPrograma = ({datos, estado, cambiarEstado}) => {
-	console.log(datos)
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
 	const handleSubmit = async (valores) => {
@@ -86,8 +85,6 @@ const EditarPrograma = ({datos, estado, cambiarEstado}) => {
 					}}
 					onSubmit={(valores, {resetForm}) => {
 						resetForm();
-						console.log('Formulario enviado');
-						console.log(valores);
 						handleSubmit(valores);
 					}}
 				>

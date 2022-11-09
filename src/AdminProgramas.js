@@ -49,7 +49,7 @@ const AdminProgramas = () => {
     event.preventDefault();
     const busqueda = event.target.nombre.value;
     const resultado = programas.filter(programa => programa.nombre === busqueda);
-    const urlR = '/Programa/' + resultado[0].tipo + '/' + resultado[0].id;
+    const urlR = '/ProgramaAdmin/' + resultado[0].tipo + '/' + resultado[0].id;
     navigate(urlR);
     console.log(resultado);
   }
