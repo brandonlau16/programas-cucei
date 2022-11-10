@@ -18,9 +18,9 @@ const ProgramasFav = () => {
     anterior = 1;
   }
 
-  if((parseInt(params.num) + 10) <= (parseInt(numBloques) + 10)){
+  if((params.num < 10)){
     siguiente = parseInt(params.num) + 10;
-  }else{
+  }else if((params.num > 10) && (params.num < 20)){
     siguiente = params.num;
   }
 
