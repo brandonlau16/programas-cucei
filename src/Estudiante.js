@@ -1,21 +1,43 @@
 import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './Estudiante.css';
+import { useNavigate } from 'react-router-dom';
 
 const Estudiante = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+	const [formularioNoEnviado, cambiarFormularioNoEnviado] = useState(false);
+	const navigate = useNavigate();
 
-	const handleSubmit = (valores) => {
-		const requestInit = {
-			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(valores)
+	const handleSubmit = async (valores) => {
+		let data = new FormData();
+        data.append('codigo', valores.codigo);
+        data.append('nombre', valores.nombre);
+        data.append('primer_apellido', valores.primer_apellido);
+        data.append('segundo_apellido', valores.segundo_apellido);
+        data.append('contrasena', valores.contrasena);
+        data.append('clave_carrera', valores.clave_carrera);
+        data.append('ciclo_escolar', valores.ciclo_escolar);
+        data.append('num_semestre', valores.num_semestre);
+        data.append('estatus', valores.estatus);
+        data.append('correo_estudiante', valores.correo_estudiante);
+        data.append('descripcion', valores.descripcion);
+        if(valores.cv !== null){
+            data.append('cv', valores.cv);
+
+			const requestInit = {
+				method: 'POST',
+				body: data
+			}
+	
+			const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudiante';
+			await fetch (url, requestInit);
+			cambiarFormularioEnviado(true);
+			setTimeout(() => cambiarFormularioEnviado(false), 5000);
+			setTimeout(() => navigate("/"), 1000);
+        }else{
+			cambiarFormularioNoEnviado(true);
+			setTimeout(() => cambiarFormularioNoEnviado(false), 5000);
 		}
-
-		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/estudiante';
-		fetch (url, requestInit);
-		cambiarFormularioEnviado(true);
-		setTimeout(() => cambiarFormularioEnviado(false), 5000);
 	}
 
 	return (
@@ -41,7 +63,8 @@ const Estudiante = () => {
 						num_semestre: '',
 						estatus: '',
 						correo_estudiante: '',
-						descripcion: ''
+						descripcion: '',
+						cv: null
 					}}
 					validate={(valores) => {
 						let errores = {};
@@ -111,7 +134,7 @@ const Estudiante = () => {
 						handleSubmit(valores);
 					}}
 				>
-					{( {errors} ) => (
+					{(errors) => (
 						<Form className="formulario-est">
 							<label htmlFor="titulo" class="titulo"><h4 class="titulo">¡Bienvenido!</h4></label><br/>
 							<div>
@@ -228,8 +251,19 @@ const Estudiante = () => {
 								</Field>
 							</div>
 
+							<div>
+                                <label htmlFor="cv">CV actual</label>
+                                <input 
+                                    type="file"
+                                    accept=".pdf"
+                                    name="cv"
+                                    onChange={(event) => errors.setFieldValue("cv", event.target.files[0])}
+                                />
+                            </div>
+
 							<button type="submit">Enviar</button>
-							{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+							{formularioEnviado && <p className="exito">Registro realizado con exito!</p>}
+							{formularioNoEnviado && <p className="exitoElimAdmin">Es obligatorio añadir un CV</p>}
 						</Form>
 					)}
 				</Formik>

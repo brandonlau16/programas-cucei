@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './Admin.css';
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+	const navigate = useNavigate();
 
-	const handleSubmit = (valores) => {
+	const handleSubmit = async (valores) => {
 		const requestInit = {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
@@ -13,9 +15,10 @@ const Admin = () => {
 		}
 
 		const url = 'http://programascuceiapi-env.eba-yk2dghvp.us-east-1.elasticbeanstalk.com/administrador';
-		fetch (url, requestInit);
+		await fetch (url, requestInit);
 		cambiarFormularioEnviado(true);
 		setTimeout(() => cambiarFormularioEnviado(false), 5000);
+		setTimeout(() => navigate("/"), 1000);
 	}
 
 	return (
@@ -141,7 +144,7 @@ const Admin = () => {
 							</div>
 
 							<button type="submit">Enviar</button>
-							{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+							{formularioEnviado && <p className="exito">Registro realizado con exito!</p>}
 						</Form>
 					)}
 				</Formik>
